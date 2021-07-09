@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<odoo noupdate="1">
+
+	<record id="data_autovacuum_rest_requests" model="muk_autovacuum.rules">
+        <field name="name">Delete requests after 1 hour</field>
+        <field name="model" ref="muk_rest.model_muk_rest_request"/>
+        <field name="time_field" ref="muk_rest.field_muk_rest_request__create_date"/>
+        <field name="active" eval="True" />
+        <field name="state">time</field>
+        <field name="time_type">hours</field>
+        <field name="time">1</field>
+        <field name="protect_starred" eval="False" />
+    </record>
+    
+    <record id="data_autovacuum_rest_bearer_tokens" model="muk_autovacuum.rules">
+        <field name="name">Delete tokens that have expired</field>
+        <field name="model" ref="muk_rest.model_muk_rest_bearer_token"/>
+        <field name="time_field" ref="muk_rest.field_muk_rest_bearer_token__expires_in"/>
+        <field name="active" eval="True" />
+        <field name="state">time</field>
+        <field name="time_type">days</field>
+        <field name="time">7</field>
+        <field name="protect_starred" eval="False" />
+    </record>
+</odoo>

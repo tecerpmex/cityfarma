@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<odoo>
+      <record id="view_account_move_form_inherit" model="ir.ui.view">
+        <field name="name">view.account.move.form.inherit</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_move_form" />
+        <field name="arch" type="xml">
+           <xpath expr="//page/field[@name='invoice_line_ids']/tree/field[@name='price_unit']" position="before">
+                <field name="maximum_price" optional="show"/>
+           </xpath>
+            <xpath expr="//page/field[@name='invoice_line_ids']/tree/field[@name='price_unit']" position="after">
+                <field name="discount_one" string="Disc1.%" optional="show"/>
+           </xpath>
+            <xpath expr="//page/field[@name='line_ids']/tree/field[@name='price_unit']" position="before">
+                <field name="maximum_price" invisible="1"/>
+                <field name="discount_one" invisible="1"/>
+           </xpath>
+
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<odoo>
+
+<template id="assets_frontend" name="Restful Frontend Assets" inherit_id="web.assets_frontend">
+	<xpath expr="//script[last()]" position="after">
+		<script type="text/javascript" src="/muk_rest/static/src/js/authorize.js" />
+	</xpath>
+	<xpath expr="//link[last()]" position="after">
+		<link rel="stylesheet" type="text/scss" href="/muk_rest/static/src/scss/variables.scss" />
+		<link rel="stylesheet" type="text/scss" href="/muk_rest/static/src/scss/authorize.scss" />
+	</xpath>
+</template>
+
+<template id="assets_backend" name="Restful Backend Assets" inherit_id="web.assets_backend">
+	<xpath expr="//link[last()]" position="after">
+		<link rel="stylesheet" type="text/scss" href="/muk_rest/static/src/scss/variables.scss" />
+		<link rel="stylesheet" type="text/scss" href="/muk_rest/static/src/scss/kanban.scss" />
+	</xpath>
+</template>
+
+</odoo>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<odoo>
+
+	<record id="view_res_users_form_preferences" model="ir.ui.view">
+	    <field name="name">res_users.form_preferences</field>
+	    <field name="model">res.users</field>
+	    <field name="inherit_id" ref="base.view_users_form_simple_modif"/>
+	    <field name="arch" type="xml">
+            <xpath expr="//footer" position="before">
+            	<group name="oauth" string="OAuth Sessions" groups="base.group_user">
+	                <group>
+	                	<field name="oauth1_sessions" />
+	                	<field name="oauth2_sessions" />
+	                </group>
+	                <group>
+	                    <button colspan="2" name="%(muk_rest.action_rest_access_token)d" type="action" 
+	                    	string="Manage your OAuth1 Sessions" class="pt-1 pb-1 oe_link" icon="fa-arrow-right" />
+	                    <button colspan="2" name="%(muk_rest.action_rest_bearer_token)d" type="action" 
+	                    	string="Manage your OAuth2 Sessions" class="pt-1 pb-1 oe_link"  icon="fa-arrow-right" />
+	                </group>
+                </group>
+            </xpath>
+	    </field>
+	</record>
+	
+	<record id="view_res_users_form" model="ir.ui.view">
+	    <field name="name">res_users.form</field>
+	    <field name="model">res.users</field>
+	    <field name="inherit_id" ref="base.view_users_form"/>
+	    <field name="arch" type="xml">
+	        <xpath expr="//div[@name='button_box']" position="inside">
+				<button  type="action" name="%(muk_rest.action_rest_access_token)d" class="oe_stat_button" icon="fa-sign-in" >
+	                <field string="OAuth1" name="oauth1_sessions" widget="statinfo"/>
+	            </button>    
+	            <button  type="action" name="%(muk_rest.action_rest_bearer_token)d" class="oe_stat_button" icon="fa-sign-in" >
+	                <field string="OAuth2" name="oauth2_sessions" widget="statinfo"/>
+	            </button>     
+			</xpath>
+	    </field>
+	</record>
+        
+</odoo>
