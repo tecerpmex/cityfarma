@@ -7,6 +7,7 @@ class SaleOrder(models.Model):
     _inherit = 'sale.order'
 
     is_paid = fields.Boolean('Paid', compute='_get_sale_paid', store=True)
+    paid = fields.Boolean('Prueba')
 
     def connection_postman(self, id):
         company = self.env['res.company'].sudo().search([('zublime', '=', True),
@@ -43,6 +44,24 @@ class SaleOrder(models.Model):
             qty_invoiced = sum([x.qty_invoiced for x in sale.order_line])
             if product_uom_qty == qty_invoiced and state_invoice:
                 sale.is_paid = True
+
+    def write(self, vals):
+        res = super(SaleOrder, self).write(vals)
+        if 'paid' in vals and self.paid:
+            self.connection_paid(self.id)
+        return res
+
+    def connection_paid(self, id):
+        company = self.env['res.company'].sudo().search([('zublime', '=', True),
+                                                        ('id', '=', self.env.user.company_id.id)], limit=1)
+        service = '/dispatch-order/notify-order-paid'
+        url = company.url_zublime + service
+        data = {
+            'ids': id,
+        }
+        headers = {"Content-type": "application/x-www-form-urlencoded"}
+        req = requests.request(method='POST', url=url, data=data, headers=headers)
+        req.json()
 
 
 class ResCompany(models.Model):

@@ -13,6 +13,7 @@
            </xpath>
             <xpath expr="//field[@name='analytic_account_id']" position='after'>
                 <field name="is_paid"/>
+                <field name="paid"/>
              </xpath>
         </field>
     </record>
