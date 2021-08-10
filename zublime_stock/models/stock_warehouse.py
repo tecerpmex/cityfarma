@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 from odoo import api, fields, models, _
+import requests
 
 
 class StockWarehouse(models.Model):
@@ -35,3 +36,34 @@ class StockWarehouse(models.Model):
                 'locations': location_res,
             })
         return res
+<<<<<<< HEAD
+=======
+
+
+class StockPicking(models.Model):
+    _inherit = 'stock.picking'
+
+    def connection_postman(self):
+        company = self.env['res.company'].sudo().search([('zublime', '=', True),
+                                                        ('id', '=', self.env.user.company_id.id)], limit=1)
+        if self.picking_type_id.sequence_code == 'OUT':
+            service = '/dispatch-order/notify-out-action'
+        elif self.picking_type_id.sequence_code == 'PACK':
+            service = '/dispatch-order/notify-packing-action'
+        elif self.picking_type_id.sequence_code == 'PACK':
+            service = '/dispatch-order/notify-picking-action'
+        url = company.url_zublime + service
+        data = {
+            'id': self.id,
+            'order_id': self.sale_id.id,
+            'state': 'done'
+        }
+        headers = {"Content-type": "application/x-www-form-urlencoded"}
+        req = requests.request(method='POST', url=url, data=data, headers=headers)
+        req.json()
+
+    def button_validate(self):
+        res = super(StockPicking, self).button_validate()
+        self.connection_postman()
+        return res
+>>>>>>> f78966431045f580db9b24b59c3311ddb4f17d8a

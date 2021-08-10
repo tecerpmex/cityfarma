@@ -11,6 +11,11 @@
             <xpath expr="//page/field[@name='order_line']/tree/field[@name='price_unit']" position="after">
                 <field name="discount_one" optional="show"/>
            </xpath>
+            <xpath expr="//field[@name='analytic_account_id']" position='after'>
+                <field name="is_paid"/>
+                <field name="paid"/>
+             </xpath>
         </field>
     </record>
+
 </odoo>

@@ -1,24 +1,72 @@
 # -*- coding: utf-8 -*-
 from odoo import api, fields, models, _
+import requests
 
 
-class SaleOrderLine(models.Model):
-    _inherit = 'sale.order.line'
+class SaleOrder(models.Model):
+    _inherit = 'sale.order'
 
-    maximum_price = fields.Float('Maximum retail price', digits='Maximum retail price', default=0.0)
-    discount_one = fields.Float(string='Discount1 (%)', digits='Discount', default=0.0)
+    is_paid = fields.Boolean('Paid', compute='_get_sale_paid', store=True)
+    paid = fields.Boolean('Prueba')
 
-    @api.onchange('product_id')
-    def product_id_change(self):
-        res = super(SaleOrderLine, self).product_id_change()
-        if self.product_id and self.product_id.maximum_price:
-            self.maximum_price = self.product_id.maximum_price
+    def connection_postman(self, id):
+        company = self.env['res.company'].sudo().search([('zublime', '=', True),
+                                                        ('id', '=', self.env.user.company_id.id)], limit=1)
+        service = '/dispatch-order/notify-order-action'
+        url = company.url_zublime + service
+        data = {
+            'id': id,
+            'state': 'done'
+        }
+        #r = requests.get(url)
+        #r.status_code
+        #headers = {"Content-type": "application/json"}
+        headers = {"Content-type": "application/x-www-form-urlencoded"}
+        req = requests.request(method='POST', url=url, data=data, headers=headers)
+        req.json()
 
+    def action_confirm(self):
+        result = super(SaleOrder, self).action_confirm()
+        self.connection_postman(self.id)
+        return result
+
+    @api.depends('order_line.product_uom_qty', 'order_line.qty_invoiced', 'invoice_ids.state')
+    def _get_sale_paid(self):
+        state_invoice = True
+        for sale in self:
+            if not sale.invoice_ids:
+                state_invoice = False
+            for invoice in sale.invoice_ids:
+                if invoice.state != 'posted':
+                    state_invoice = False
+                    break
+            product_uom_qty = sum([x.product_uom_qty for x in sale.order_line])
+            qty_invoiced = sum([x.qty_invoiced for x in sale.order_line])
+            if product_uom_qty == qty_invoiced and state_invoice:
+                sale.is_paid = True
+
+    def write(self, vals):
+        res = super(SaleOrder, self).write(vals)
+        if 'paid' in vals and self.paid:
+            self.connection_paid(self.id)
         return res
 
-    @api.onchange('maximum_price', 'price_unit')
-    def _onchange_discount_one(self):
-        for account in self:
-            if account.maximum_price and account.price_unit:
-                discount1 = account.maximum_price - account.price_unit
-                account.discount_one = discount1/account.maximum_price*100
+    def connection_paid(self, id):
+        company = self.env['res.company'].sudo().search([('zublime', '=', True),
+                                                        ('id', '=', self.env.user.company_id.id)], limit=1)
+        service = '/dispatch-order/notify-order-paid'
+        url = company.url_zublime + service
+        data = {
+            'ids': id,
+        }
+        headers = {"Content-type": "application/x-www-form-urlencoded"}
+        req = requests.request(method='POST', url=url, data=data, headers=headers)
+        req.json()
+
+
+class ResCompany(models.Model):
+    _inherit = 'res.company'
+
+    zublime = fields.Boolean(string='Zublime', readonly=False)
+    url_zublime = fields.Char('Url service')
+
