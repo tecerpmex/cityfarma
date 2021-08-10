@@ -9,9 +9,12 @@
     "category": "account",
     "complexity": "normal",
     "description": """ """,
-    "depends": ["account","account_accountant"],
+    "depends": ["account", "account_accountant"],
     "data": [
         "views/zublime_payment_extra_fee_view.xml",
+        "report/statements_report.xml",
+        "report/template_header.xml",
+        "report/zublime_payment_extra_fee_report.xml",
         # "views/menu_view.xml",
     ],
     "installable": True,

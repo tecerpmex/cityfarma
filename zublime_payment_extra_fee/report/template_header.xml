@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <template id="custom_header_zublime_payment_extra" name="header">
+        <div class="header">
+            <div class="mt0 text-left">
+                <h4 class="text-center">
+                    <strong>
+                        <span t-esc="company"/>
+                    </strong>
+                </h4>
+            </div>
+            <div class="mt0 text-left">
+                <h6 class="mt0 text-center">
+                    <b>Recibo</b>
+                </h6>
+            </div>
+        </div>
+        <div class="article" t-att-data-oe-model="o and o._name" t-att-data-oe-id="o and o.id"
+             t-att-data-oe-lang="o and o.env.context.get('lang')">
+            <t t-raw="0"/>
+        </div>
+    </template>
+
+
+</odoo>
