@@ -27,7 +27,7 @@ class SaleOrder(models.Model):
         context.pop('default_name', None)
         if not self.env.user.has_group('sales_team.group_sale_manager'):
             raise ValidationError(_(
-                    "should require an approval from an Administrator of Sales to confirm the order."))
+                    "Requires an administrator to confirm it due to products without availability."))
         else:
             self.with_context(context)._action_confirm()
         if self.env.user.has_group('sale.group_auto_done_setting'):
