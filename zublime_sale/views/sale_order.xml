@@ -12,8 +12,7 @@
                 <field name="discount_one" optional="show"/>
            </xpath>
             <xpath expr="//field[@name='analytic_account_id']" position='after'>
-                <field name="is_paid"/>
-                <field name="paid"/>
+                <field name="is_paid"/>       
              </xpath>
         </field>
     </record>
