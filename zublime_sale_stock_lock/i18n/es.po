@@ -4,32 +4,28 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 14.0\n"
+"Project-Id-Version: Odoo Server 14.0+e-20210402\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-08-10 14:53+0000\n"
-"PO-Revision-Date: 2021-08-10 14:53+0000\n"
+"POT-Creation-Date: 2021-08-11 05:22+0000\n"
+"PO-Revision-Date: 2021-08-11 01:26-0400\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: \n"
+"Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: \n"
+"Language: es\n"
+"X-Generator: Poedit 2.3\n"
 
 #. module: zublime_sale_stock_lock
 #: model:ir.model.fields,field_description:zublime_sale_stock_lock.field_sale_order__display_name
 msgid "Display Name"
-msgstr "Nombre mostrado"
+msgstr "Nombre para mostrar"
 
 #. module: zublime_sale_stock_lock
 #: model:ir.model.fields,field_description:zublime_sale_stock_lock.field_sale_order__id
 msgid "ID"
-msgstr ""
-
-#. module: zublime_sale_stock_lock
-#: code:addons/zublime_sale_stock_lock/models/sale_order.py:0
-#, python-format
-msgid "It is not allowed to confirm an order in the following states: %s"
-msgstr "No está permitido confirmar un pedido en los siguientes estados:"
+msgstr "ID"
 
 #. module: zublime_sale_stock_lock
 #: model:ir.model.fields,field_description:zublime_sale_stock_lock.field_sale_order____last_update
@@ -43,17 +39,10 @@ msgid ""
 "Requires an administrator to confirm it due to products without "
 "availability."
 msgstr ""
-"Requiere que un administrador lo confirme debido aque hay productos sin"
-"disponibilidad."
+"Requiere que un administrador lo confirme debido a productos "
+"sin disponibilidad."
 
 #. module: zublime_sale_stock_lock
 #: model:ir.model,name:zublime_sale_stock_lock.model_sale_order
 msgid "Sales Order"
-msgstr "Pedido de venta"
-
-#. module: zublime_sale_stock_lock
-#: code:addons/zublime_sale_stock_lock/models/sale_order.py:0
-#, python-format
-msgid ""
-"That we’re selling stock that is not available for the chose warehouse."
-msgstr "Estamos vendiendo stock que no está disponible para el almacén elegido."
+msgstr "Órdenes de venta"
