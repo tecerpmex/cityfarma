@@ -1,9 +1,0 @@
-﻿<odoo>
-    <data>
-        <menuitem sequence="1" name="Zublime payment" id="zublime_payment_mod_menu_root"
-                  web_icon="zublime_payment_extra_fee,static/description/icon2.jpg"/>
-
-        <menuitem parent="zublime_payment_mod_menu_root" sequence="2" name="Zublime payment"
-                  id="zublime_payment_mod_menu" action="action_zublime_payment"/>
-    </data>
-</odoo>

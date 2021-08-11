@@ -15,7 +15,6 @@
         "report/statements_report.xml",
         "report/template_header.xml",
         "report/zublime_payment_extra_fee_report.xml",
-        # "views/menu_view.xml",
     ],
     "installable": True,
     "application": False,

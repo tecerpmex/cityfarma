@@ -4,41 +4,53 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 14.0+e-20210228\n"
+"Project-Id-Version: Odoo Server 14.0+e-20210402\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-08-09 21:11+0000\n"
-"PO-Revision-Date: 2021-08-09 21:11+0000\n"
+"POT-Creation-Date: 2021-08-11 07:02+0000\n"
+"PO-Revision-Date: 2021-08-11 03:11-0400\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: \n"
+"Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: \n"
+"Language: es\n"
+"X-Generator: Poedit 2.3\n"
+
+#. module: zublime_payment_extra_fee
+#: model_terms:ir.ui.view,arch_db:zublime_payment_extra_fee.zublime_payment_extra_fee_pdf
+msgid "&amp;nbsp;&amp;nbsp;&amp;nbsp;"
+msgstr "&amp;nbsp;&amp;nbsp;&amp;nbsp;"
+
+#. module: zublime_payment_extra_fee
+#: model_terms:ir.ui.view,arch_db:zublime_payment_extra_fee.custom_header_zublime_payment_extra
+msgid "<b>Recibo</b>"
+msgstr "<b>Recibo</b>"
 
 #. module: zublime_payment_extra_fee
 #: model_terms:ir.ui.view,arch_db:zublime_payment_extra_fee.report_header_custom
 msgid "<span>Amount Paid</span>"
-msgstr "<span>Cantidad Pagada</span>"
+msgstr "<span>Importe Pagado</span>"
 
 #. module: zublime_payment_extra_fee
 #: model_terms:ir.ui.view,arch_db:zublime_payment_extra_fee.report_header_custom
 msgid "<span>Balance</span>"
-msgstr ""
+msgstr "<span>Balance</span>"
 
 #. module: zublime_payment_extra_fee
 #: model_terms:ir.ui.view,arch_db:zublime_payment_extra_fee.report_header_custom
 msgid "<span>Invoice Date</span>"
-msgstr "<span>Fecha de Factura</span>"
+msgstr "<span>Fecha de la factura</span>"
 
 #. module: zublime_payment_extra_fee
 #: model_terms:ir.ui.view,arch_db:zublime_payment_extra_fee.report_header_custom
 msgid "<span>Invoice Number</span>"
-msgstr "<span>Número de Factura</span>"
+msgstr "<span>Número de factura</span>"
 
 #. module: zublime_payment_extra_fee
 #: model_terms:ir.ui.view,arch_db:zublime_payment_extra_fee.report_header_custom
 msgid "<span>Original Amount</span>"
-msgstr "<span>Importe Original</span>"
+msgstr "<span>Importe original</span>"
 
 #. module: zublime_payment_extra_fee
 #: model_terms:ir.ui.view,arch_db:zublime_payment_extra_fee.report_header_custom
@@ -53,7 +65,7 @@ msgstr "<strong>Cliente:</strong>"
 #. module: zublime_payment_extra_fee
 #: model_terms:ir.ui.view,arch_db:zublime_payment_extra_fee.report_header_custom
 msgid "<strong>Memo:</strong>"
-msgstr ""
+msgstr "<strong>Nota:</strong>"
 
 #. module: zublime_payment_extra_fee
 #: model_terms:ir.ui.view,arch_db:zublime_payment_extra_fee.report_header_custom
@@ -63,17 +75,17 @@ msgstr "<strong>Importe del pago:</strong>"
 #. module: zublime_payment_extra_fee
 #: model_terms:ir.ui.view,arch_db:zublime_payment_extra_fee.report_header_custom
 msgid "<strong>Payment Date:</strong>"
-msgstr "<strong>Fecha del Pago:</strong>"
+msgstr "<strong>Fecha de pago:</strong>"
 
 #. module: zublime_payment_extra_fee
 #: model_terms:ir.ui.view,arch_db:zublime_payment_extra_fee.report_header_custom
 msgid "<strong>Payment Method:</strong>"
-msgstr "<strong>Método de Pago:</strong>"
+msgstr "<strong>Método de pago:</strong>"
 
 #. module: zublime_payment_extra_fee
 #: model_terms:ir.ui.view,arch_db:zublime_payment_extra_fee.report_header_custom
 msgid "<strong>Tarrif: </strong>"
-msgstr "<strong>Tarifa: </strong>"
+msgstr "<strong>Tarifa Extra:</strong>"
 
 #. module: zublime_payment_extra_fee
 #: model_terms:ir.ui.view,arch_db:zublime_payment_extra_fee.report_header_custom
@@ -84,32 +96,49 @@ msgstr "<strong>Proveedor:</strong>"
 #: model:ir.model.fields,field_description:zublime_payment_extra_fee.field_account_payment__display_name
 #: model:ir.model.fields,field_description:zublime_payment_extra_fee.field_account_payment_register__display_name
 #: model:ir.model.fields,field_description:zublime_payment_extra_fee.field_l10n_mx_edi_payment_method__display_name
+#: model:ir.model.fields,field_description:zublime_payment_extra_fee.field_report_zublime_payment_extra_fee_zublime_payment_extra_fee_pdf__display_name
 msgid "Display Name"
-msgstr "Nombre mostrado"
+msgstr "Nombre para mostrar"
+
+#. module: zublime_payment_extra_fee
+#: model_terms:ir.ui.view,arch_db:zublime_payment_extra_fee.zublime_payment_extra_fee_pdf
+msgid ""
+"Fecha del Pago:\n"
+"                                            <br/>"
+msgstr ""
+"Fecha del Pago:\n"
+"                                            <br/>"
 
 #. module: zublime_payment_extra_fee
 #: model:ir.model.fields,field_description:zublime_payment_extra_fee.field_account_payment__id
 #: model:ir.model.fields,field_description:zublime_payment_extra_fee.field_account_payment_register__id
 #: model:ir.model.fields,field_description:zublime_payment_extra_fee.field_l10n_mx_edi_payment_method__id
+#: model:ir.model.fields,field_description:zublime_payment_extra_fee.field_report_zublime_payment_extra_fee_zublime_payment_extra_fee_pdf__id
 msgid "ID"
-msgstr ""
+msgstr "ID"
+
+#. module: zublime_payment_extra_fee
+#: model_terms:ir.ui.view,arch_db:zublime_payment_extra_fee.zublime_payment_extra_fee_pdf
+msgid "Importe del pago:"
+msgstr "Importe del pago:"
 
 #. module: zublime_payment_extra_fee
 #: model:ir.model.fields,field_description:zublime_payment_extra_fee.field_account_payment____last_update
 #: model:ir.model.fields,field_description:zublime_payment_extra_fee.field_account_payment_register____last_update
 #: model:ir.model.fields,field_description:zublime_payment_extra_fee.field_l10n_mx_edi_payment_method____last_update
+#: model:ir.model.fields,field_description:zublime_payment_extra_fee.field_report_zublime_payment_extra_fee_zublime_payment_extra_fee_pdf____last_update
 msgid "Last Modified on"
 msgstr "Última modificación el"
 
 #. module: zublime_payment_extra_fee
 #: model:ir.model,name:zublime_payment_extra_fee.model_l10n_mx_edi_payment_method
 msgid "Payment Method for Mexico from SAT Data"
-msgstr "Método de Pago para México, datos del SAT"
+msgstr "Método de pago para México a partir de datos del SAT"
 
 #. module: zublime_payment_extra_fee
 #: model_terms:ir.ui.view,arch_db:zublime_payment_extra_fee.report_header_custom
 msgid "Payment Receipt:"
-msgstr "Recibo de Pago"
+msgstr "Recibo de pago:"
 
 #. module: zublime_payment_extra_fee
 #: model:ir.model,name:zublime_payment_extra_fee.model_account_payment
@@ -117,18 +146,45 @@ msgid "Payments"
 msgstr "Pagos"
 
 #. module: zublime_payment_extra_fee
-#: model:ir.model,name:zublime_payment_extra_fee.model_account_payment_register
-msgid "Register Payment"
-msgstr "Registrar pago"
+#: model_terms:ir.ui.view,arch_db:zublime_payment_extra_fee.zublime_payment_extra_fee_pdf
+msgid "Recibo de Pago:"
+msgstr "Recibo de Pago:"
 
 #. module: zublime_payment_extra_fee
+#: model:ir.actions.report,name:zublime_payment_extra_fee.zublime_payment_extra_fee_id
+msgid "Recibo extra"
+msgstr "Recibo extra"
+
+#. module: zublime_payment_extra_fee
+#: model:ir.model,name:zublime_payment_extra_fee.model_account_payment_register
+msgid "Register Payment"
+msgstr "Registro de pago"
+
+#. module: zublime_payment_extra_fee
+#: model:ir.model,name:zublime_payment_extra_fee.model_report_zublime_payment_extra_fee_zublime_payment_extra_fee_pdf
+msgid "Report"
+msgstr "Reporte"
+
+#. module: zublime_payment_extra_fee
+#: model_terms:ir.ui.view,arch_db:zublime_payment_extra_fee.zublime_payment_extra_fee_pdf
+msgid "Tarifa:"
+msgstr "Tarifa Extra"
+
+#. module: zublime_payment_extra_fee
+#: model:ir.model.fields,field_description:zublime_payment_extra_fee.field_account_payment__fee
 #: model:ir.model.fields,field_description:zublime_payment_extra_fee.field_account_payment__tariff
+#: model:ir.model.fields,field_description:zublime_payment_extra_fee.field_account_payment_register__fee
 #: model:ir.model.fields,field_description:zublime_payment_extra_fee.field_l10n_mx_edi_payment_method__tariff
 #: model_terms:ir.ui.view,arch_db:zublime_payment_extra_fee.view_account_payment_form_pa_inherit
 msgid "Tariff"
-msgstr "Tarifa"
+msgstr "Tarifa Extra"
 
 #. module: zublime_payment_extra_fee
 #: model:ir.model.fields,field_description:zublime_payment_extra_fee.field_account_payment_register__tariff
 msgid "Tariff %"
-msgstr "Tarifa %"
+msgstr "Tarifa Extra"
+
+#. module: zublime_payment_extra_fee
+#: model_terms:ir.ui.view,arch_db:zublime_payment_extra_fee.zublime_payment_extra_fee_pdf
+msgid "Total con Tarifa:"
+msgstr "Total con Tarifa Extra"
