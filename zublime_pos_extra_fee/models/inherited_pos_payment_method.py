@@ -9,4 +9,4 @@ class PosPaymentMethod(models.Model):
 
     # Fields declaration
     extra_fee = fields.Float(
-        string='Extra Fee')
+        string='Payment commission (%)')
