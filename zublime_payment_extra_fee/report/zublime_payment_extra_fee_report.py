@@ -17,9 +17,18 @@ class PDFReportSub(models.AbstractModel):
         model = report.model
         payment = self.env[model].search([('id', '=', docids)])
         data = []
+        array_product = []
         if payment:
             for p in payment:
-                data.append((p.name, p.date, p.partner_id.name, p.amount, p.tariff, p.amount + p.tariff, p.move_id.name))
+                if p.move_id._get_reconciled_invoices_partials():
+                    for move in p.move_id._get_reconciled_invoices_partials():
+                        for rec in move[2].move_id:
+                            for line in rec.invoice_line_ids:
+                                array_product.append((line.product_id.name, line.quantity, line.price_unit,))
+                            data.append(
+                                (p.name, p.date, p.partner_id.name, p.amount, p.tariff, p.amount + p.tariff,
+                                 p.move_id.name, rec.name, array_product,rec.amount_total))
+        print(data)
         return {
             'company': company,
             'val': data,
