@@ -28,7 +28,6 @@ class PDFReportSub(models.AbstractModel):
                             data.append(
                                 (p.name, p.date, p.partner_id.name, p.amount, p.tariff, p.amount + p.tariff,
                                  p.move_id.name, rec.name, array_product,rec.amount_total))
-        print(data)
         return {
             'company': company,
             'val': data,
