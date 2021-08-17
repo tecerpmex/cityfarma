@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<odoo>
+
+	<record id="action_rest_endpoints" model="ir.actions.act_url">
+    	<field name="name">Endpoints</field>
+		<field name="url">https://app.swaggerhub.com/apis-docs/keshrath/muk_rest/3.0.0</field>
+		<field name="target">new</field>
+	</record>	
+	
+	<record id="action_rest_examples" model="ir.actions.act_url">
+    	<field name="name">Examples</field>
+		<field name="url">https://github.com/muk-it/muk_docs/tree/12.0/muk_rest</field>
+		<field name="target">new</field>
+	</record>	
+		
+	<menuitem id="menu_rest_endpoints" 
+		name="Endpoints"
+		parent="cat_menu_rest_documentation" 
+		action="action_rest_endpoints" />	
+		
+	<menuitem id="menu_rest_examples" 
+		name="Examples"
+		parent="cat_menu_rest_documentation" 
+		action="action_rest_examples" />	
+		
+</odoo>

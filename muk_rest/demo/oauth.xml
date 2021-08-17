@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<odoo>
+
+	<record id="demo_rest_oauth2_mobile" model="muk_rest.oauth2">
+	    <field name="name">Demo OAuth2 - Mobile Application Flow</field>
+	    <field name="client_id">MobileApplicationFlowDemoClientKey</field>
+	    <field name="client_secret">MobileApplicationFlowDemoClientSecret</field>
+	    <field name="state">implicit</field>
+	    <field name="security">basic</field>
+	    <field name="company">MuK IT</field>
+	    <field name="homepage">https://mukit.at</field>
+	</record>
+        
+    <record id="demo_rest_callback_mobile" model="muk_rest.callback">
+	    <field name="url">https://app.swaggerhub.com/oauth2_redirect</field>
+	    <field name="oauth" ref="demo_rest_oauth2_mobile" />
+	</record>
+	
+	<record id="demo_rest_oauth2_legacy" model="muk_rest.oauth2">
+	    <field name="name">Demo OAuth2 - Legacy Application Flow</field>
+	    <field name="client_id">LegacyApplicationFlowDemoClientKey</field>
+	    <field name="client_secret">LegacyApplicationFlowDemoClientSecret</field>
+	    <field name="state">password</field>
+	    <field name="security">basic</field>
+	    <field name="company">MuK IT</field>
+	    <field name="homepage">https://mukit.at</field>
+	</record>
+	
+	<record id="demo_rest_oauth2_backend" model="muk_rest.oauth2">
+	    <field name="name">Demo OAuth2 - Backend Application Flow</field>
+	    <field name="client_id">BackendApplicationFlowDemoClientKey</field>
+	    <field name="client_secret">BackendApplicationFlowDemoClientSecret</field>
+	    <field name="state">client_credentials</field>
+	    <field name="security">basic</field>
+	    <field name="company">MuK IT</field>
+	    <field name="homepage">https://mukit.at</field>
+	    <field name="user" ref="base.user_demo" />
+	</record>
+	
+</odoo>

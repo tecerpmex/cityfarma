@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<odoo>
+
+	<record id="demo_rest_endpoint" model="muk_rest.endpoint">
+	    <field name="name">Get all Companies</field>
+	    <field name="endpoint">contacts/companies</field>
+	    <field name="model" ref="base.model_res_partner" />
+	    <field name="method">GET</field>
+	    <field name="state">domain</field>
+	    <field name="domain">[["is_company","=",True]]</field>
+	</record>
+
+</odoo>
