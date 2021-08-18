@@ -5,7 +5,7 @@
             model="account.payment"
             string="Recibo extra"
             report_type="qweb-pdf"
-            name="zublime_payment_extra_fee.zublime_payment_extra_fee_pdf"
+            name="zublime_account.zublime_payment_extra_fee_pdf"
             file="Recibo de pago extra"
             menu="True"
     />

@@ -20,6 +20,7 @@
                 <field name="payment_date" position="before">
                     <field name="fee" invisible="1"/>
                     <field name="tariff" attrs="{'invisible': [('fee', '=', 0)]}"/>
+                    <field name="amount_fee" attrs="{'invisible': [('fee', '=', 0)]}"/>
                 </field>
             </field>
         </record>
@@ -32,6 +33,7 @@
                 <field name="date" position="before">
                     <field name="fee" invisible="1"/>
                     <field name="tariff" string="Tariff" widget="monetary" options="{'currency_field':'currency_id'}" attrs="{'invisible': [('fee', '=', 0)]}"/>
+                    <field name="amount_fee" string="Total Amount" widget="monetary" options="{'currency_field':'currency_id'}" attrs="{'invisible': [('fee', '=', 0)]}"/>
                 </field>
             </field>
         </record>

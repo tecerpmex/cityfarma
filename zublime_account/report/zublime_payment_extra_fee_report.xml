@@ -5,7 +5,7 @@
             <t t-set="data_report_margin_top" t-value="15"/>
             <t t-set="data_report_header_spacing" t-value="12"/>
             <t t-set="data_report_dpi" t-value="110"/>
-            <t t-call="zublime_payment_extra_fee.custom_header_zublime_payment_extra">
+            <t t-call="zublime_account.custom_header_zublime_payment_extra">
                 <t t-foreach="val" t-as="v">
                     <div class="page">
                         <table width="100%">

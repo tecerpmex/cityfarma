@@ -1,6 +1,6 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-# 	* zublime_sale_stock_lock
+# 	* zublime_sale_stock
 #
 msgid ""
 msgstr ""
@@ -17,23 +17,23 @@ msgstr ""
 "Language: es\n"
 "X-Generator: Poedit 2.3\n"
 
-#. module: zublime_sale_stock_lock
-#: model:ir.model.fields,field_description:zublime_sale_stock_lock.field_sale_order__display_name
+#. module: zublime_sale_stock
+#: model:ir.model.fields,field_description:zublime_sale_stock.field_sale_order__display_name
 msgid "Display Name"
 msgstr "Nombre para mostrar"
 
-#. module: zublime_sale_stock_lock
-#: model:ir.model.fields,field_description:zublime_sale_stock_lock.field_sale_order__id
+#. module: zublime_sale_stock
+#: model:ir.model.fields,field_description:zublime_sale_stock.field_sale_order__id
 msgid "ID"
 msgstr "ID"
 
-#. module: zublime_sale_stock_lock
-#: model:ir.model.fields,field_description:zublime_sale_stock_lock.field_sale_order____last_update
+#. module: zublime_sale_stock
+#: model:ir.model.fields,field_description:zublime_sale_stock.field_sale_order____last_update
 msgid "Last Modified on"
 msgstr "Última modificación el"
 
-#. module: zublime_sale_stock_lock
-#: code:addons/zublime_sale_stock_lock/models/sale_order.py:0
+#. module: zublime_sale_stock
+#: code:addons/zublime_sale_stock/models/sale_order.py:0
 #, python-format
 msgid ""
 "Requires an administrator to confirm it due to products without "
@@ -42,7 +42,7 @@ msgstr ""
 "Requiere que un administrador lo confirme debido a productos "
 "sin disponibilidad."
 
-#. module: zublime_sale_stock_lock
-#: model:ir.model,name:zublime_sale_stock_lock.model_sale_order
+#. module: zublime_sale_stock
+#: model:ir.model,name:zublime_sale_stock.model_sale_order
 msgid "Sales Order"
 msgstr "Órdenes de venta"

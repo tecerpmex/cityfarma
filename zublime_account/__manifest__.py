@@ -11,6 +11,7 @@
     "description": """ """,
     "depends": ["account", "account_accountant"],
     "data": [
+        "security/ir.model.access.csv",
         "views/zublime_payment_extra_fee_view.xml",
         "report/statements_report.xml",
         "report/template_header.xml",

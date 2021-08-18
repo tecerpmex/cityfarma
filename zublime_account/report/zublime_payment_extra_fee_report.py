@@ -7,13 +7,13 @@ import itertools
 
 
 class PDFReportSub(models.AbstractModel):
-    _name = 'report.zublime_payment_extra_fee.zublime_payment_extra_fee_pdf'
+    _name = 'report.zublime_account.zublime_payment_extra_fee_pdf'
     _description = u'Report'
 
     def _get_report_values(self, docids, data=None):
         company = self.env.user.company_id.name
         report_obj = self.env['ir.actions.report']
-        report = report_obj._get_report_from_name('zublime_payment_extra_fee.zublime_payment_extra_fee_pdf')
+        report = report_obj._get_report_from_name('zublime_account.zublime_payment_extra_fee_pdf')
         model = report.model
         payment = self.env[model].search([('id', '=', docids)])
         data = []
