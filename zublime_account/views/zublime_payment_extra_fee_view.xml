@@ -17,10 +17,23 @@
             <field name="model">account.payment.register</field>
             <field name="inherit_id" ref="account.view_account_payment_register_form"/>
             <field name="arch" type="xml">
+                <label for="amount" position="before">
+                    <label for="amount_due"
+                            attrs="{'invisible': ['|', ('can_edit_wizard', '=', False), '&amp;', ('can_group_payments', '=', True), ('group_payment', '=', False)]}"/>
+                    <div name="amount_div0" class="o_row"
+                            attrs="{'invisible': ['|', ('can_edit_wizard', '=', False), '&amp;', ('can_group_payments', '=', True), ('group_payment', '=', False)]}">
+                        <field name="amount_due" readonly="1" force_save="1"/>
+                        <field name="currency_id"
+                                options="{'no_create': True, 'no_open': True}"
+                                groups="base.group_multi_currency"/>
+                    </div>
+                </label>
                 <field name="payment_date" position="before">
                     <field name="fee" invisible="1"/>
-                    <field name="tariff" attrs="{'invisible': [('fee', '=', 0)]}"/>
-                    <field name="amount_fee" attrs="{'invisible': [('fee', '=', 0)]}"/>
+                    <field name="tariff" attrs="{'invisible': [('fee', '=', 0)]}" foce_save="1"/>
+                    <field name="amount_fee" attrs="{'invisible': [('fee', '=', 0)]}" foce_save="1"/>
+                    <field name="cash_received"/>
+                    <field name="change_return"/>
                 </field>
             </field>
         </record>
