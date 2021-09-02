@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="zublime_payment_extra_fee_pdf">
+        <t t-call="web.html_container">
+            <t t-set="data_report_margin_top" t-value="15"/>
+            <t t-set="data_report_header_spacing" t-value="12"/>
+            <t t-set="data_report_dpi" t-value="110"/>
+            <t t-call="zublime_account.custom_header_zublime_payment_extra">
+                <t t-foreach="val" t-as="v">
+                    <div class="page">
+                        <table width="100%">
+                            <tr>
+                                <td>
+                                    <div class="text-center">
+                                        --------------------
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="text-center">
+                                        <h5>
+                                            <span t-esc="v[2]"/>
+                                        </h5>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="text-center">
+                                        <h5>
+                                            Número de Factura:&amp;nbsp;
+                                            <span t-esc="v[7]"/>
+                                        </h5>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                        <br/>
+                        <table width="100%">
+                            <tr>
+                                <td class="text-center"
+                                    style="padding:0  margin:0 !important;"
+                                    width='15%'>
+                                </td>
+                                <td class="text-center"
+                                    style="padding:0  margin:0 !important;  border: 1px solid;"
+                                    width='30%'>
+                                    <h5>
+                                        Nombre producto:
+                                    </h5>
+                                </td>
+                                <td class="text-center"
+                                    style="padding:0  margin:0 !important;  border: 1px solid;"
+                                    width='20%'>
+                                    <h5>
+                                        Cantidad
+                                    </h5>
+                                </td>
+                                <td class="text-center"
+                                    style="padding:0  margin:0 !important;  border: 1px solid;"
+                                    width='20%'>
+                                    <h5>
+                                        Precio
+                                    </h5>
+                                </td>
+                                <td class="text-center"
+                                    style="padding:0  margin:0 !important;"
+                                    width='15%'>
+                                </td>
+                            </tr>
+                            <tr t-foreach="v[8]" t-as="c">
+                                <td class="text-center"
+                                    style="padding:0  margin:0 !important;"
+                                    width='15%'>
+                                </td>
+                                <td class="text-center"
+                                    style="padding:0  margin:0 !important;"
+                                    width='30%'>
+                                    <h5>
+                                        <span t-esc="c[0]"/>
+                                    </h5>
+                                </td>
+                                <td class="text-center"
+                                    style="padding:0  margin:0 !important;"
+                                    width='20%'>
+                                    <h5>
+                                        <span t-esc="'{0:.2f}'.format(c[1])"/>
+                                    </h5>
+                                </td>
+                                <td class="text-center"
+                                    style="padding:0  margin:0 !important;"
+                                    width='20%'>
+                                    <h5>
+                                        <span t-esc="'{0:.2f}'.format(c[2])"/>
+                                    </h5>
+                                </td>
+                                <td class="text-center"
+                                    style="padding:0  margin:0 !important;"
+                                    width='15%'>
+                                </td>
+                            </tr>
+                        </table>
+                        <br/>
+                        <table width="100%">
+                            <tr>
+                                <td>
+                                    <div class="text-center">
+                                        <h5>
+                                            Total Factura: &amp;nbsp;
+                                            <span t-esc="v[9]"/>
+                                        </h5>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                            </tr>
+                        </table>
+                        <br/>
+                        <table width="100%">
+                            <tr>
+                                <td>
+                                    <div class="text-center">
+                                        <h5>
+                                            Recibo de Pago:&amp;nbsp;
+                                            <span t-esc="v[0]"/>
+                                        </h5>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="text-center">
+                                        <h5>
+                                            Fecha del Pago:&amp;nbsp;
+                                            <span t-esc="v[1]"/>
+                                        </h5>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                        <br/>
+                        <table width="100%">
+                            <tr>
+                                <td class="text-right"
+                                    style="padding:0  margin:0 !important;"
+                                    width='40%'>
+                                    <h5>
+                                        Importe del pago:
+                                    </h5>
+                                </td>
+                                <td class="text-right"
+                                    style="padding:0  margin:0 !important;"
+                                    width='40%'>
+                                    <h5>
+                                        $
+                                        <span t-esc="'{0:.2f}'.format(v[3])"/>
+                                    </h5>
+                                </td>
+                                <td class="text-right"
+                                    style="padding:0  margin:0 !important;"
+                                    width='20%'>
+                                    <h5>
+                                    </h5>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="text-right"
+                                    style="padding:0  margin:0 !important;"
+                                    width='40%'>
+                                    <h5>
+                                        Tarifa:
+                                    </h5>
+                                </td>
+                                <td class="text-right"
+                                    style="padding:0  margin:0 !important;"
+                                    width='40%'>
+                                    <h5>
+                                        $
+                                        <span t-esc="'{0:.2f}'.format(v[4])"/>
+                                    </h5>
+                                </td>
+                                <td class="text-right"
+                                    style="padding:0  margin:0 !important;"
+                                    width='20%'>
+                                    <h5>
+                                    </h5>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="text-right"
+                                    style="padding:0  margin:0 !important;"
+                                    width='40%'>
+                                    <h5>
+                                        Total con Tarifa:
+                                    </h5>
+                                </td>
+                                <td class="text-right"
+                                    style="padding:0  margin:0 !important;"
+                                    width='40%'>
+                                    <h5>
+                                        $
+                                        <span t-esc="'{0:.2f}'.format(v[5])"/>
+                                    </h5>
+                                </td>
+                                <td class="text-right"
+                                    style="padding:0  margin:0 !important;"
+                                    width='20%'>
+                                    <h5>
+                                    </h5>
+                                </td>
+                            </tr>
+
+                        </table>
+                        <div class="mt0 text-center">
+                            <span
+                                  t-esc="context_timestamp(datetime.datetime.now()).strftime('%Y-%m-%d %H:%M')">&amp;nbsp;&amp;nbsp;&amp;nbsp;
+                            </span>
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>

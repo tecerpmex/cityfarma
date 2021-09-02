@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<odoo>
+    <report
+            id="zublime_payment_extra_fee_id"
+            model="account.payment"
+            string="Recibo extra"
+            report_type="qweb-pdf"
+            name="zublime_account.zublime_payment_extra_fee_pdf"
+            file="Recibo de pago extra"
+            menu="True"
+    />
+    <record id="paperformat_zublime_payment_extra_fee" model="report.paperformat">
+        <field name="name">Formato zublime_payment_extra_fee</field>
+        <field name="default" eval="True"/>
+        <field name="format">Letter</field>
+        <field name="orientation">Portrait</field>
+        <field name="margin_left">1</field>
+        <field name="margin_right">95</field>
+        <field name="header_line" eval="False"/>
+        <field name="dpi">100</field>
+        <field name="report_ids" eval="[(4, ref('zublime_payment_extra_fee_id'))]"/>
+    </record>
+</odoo>

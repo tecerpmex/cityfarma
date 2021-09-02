@@ -1,0 +1,48 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* zublime_sale_stock
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 14.0+e-20210402\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-08-11 05:22+0000\n"
+"PO-Revision-Date: 2021-08-11 01:26-0400\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
+"Language: es\n"
+"X-Generator: Poedit 2.3\n"
+
+#. module: zublime_sale_stock
+#: model:ir.model.fields,field_description:zublime_sale_stock.field_sale_order__display_name
+msgid "Display Name"
+msgstr "Nombre para mostrar"
+
+#. module: zublime_sale_stock
+#: model:ir.model.fields,field_description:zublime_sale_stock.field_sale_order__id
+msgid "ID"
+msgstr "ID"
+
+#. module: zublime_sale_stock
+#: model:ir.model.fields,field_description:zublime_sale_stock.field_sale_order____last_update
+msgid "Last Modified on"
+msgstr "Última modificación el"
+
+#. module: zublime_sale_stock
+#: code:addons/zublime_sale_stock/models/sale_order.py:0
+#, python-format
+msgid ""
+"Requires an administrator to confirm it due to products without "
+"availability."
+msgstr ""
+"Requiere que un administrador lo confirme debido a productos "
+"sin disponibilidad."
+
+#. module: zublime_sale_stock
+#: model:ir.model,name:zublime_sale_stock.model_sale_order
+msgid "Sales Order"
+msgstr "Órdenes de venta"

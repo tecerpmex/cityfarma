@@ -1,0 +1,57 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* zublime_point_of_sale
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 14.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-08-12 13:12+0000\n"
+"PO-Revision-Date: 2021-08-12 09:17-0400\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
+"Language: es\n"
+"X-Generator: Poedit 3.0\n"
+
+#. module: zublime_point_of_sale
+#. openerp-web
+#: code:addons/zublime_point_of_sale/static/src/xml/OrderReceipt.xml:0
+#, python-format
+msgid "Card payment commission"
+msgstr "Comisión de pago con tarjeta"
+
+#. module: zublime_point_of_sale
+#: model:ir.model.fields,field_description:zublime_point_of_sale.field_pos_payment_method__display_name
+msgid "Display Name"
+msgstr "Nombre mostrado"
+
+#. module: zublime_point_of_sale
+#: model:ir.model.fields,field_description:zublime_point_of_sale.field_pos_payment_method__id
+msgid "ID"
+msgstr "ID"
+
+#. module: zublime_point_of_sale
+#: model:ir.model.fields,field_description:zublime_point_of_sale.field_pos_payment_method____last_update
+msgid "Last Modified on"
+msgstr "Última modificación el"
+
+#. module: zublime_point_of_sale
+#: model:ir.model.fields,field_description:zublime_point_of_sale.field_pos_payment_method__extra_fee
+msgid "Payment commission (%)"
+msgstr "Comisión de pago (%)"
+
+#. module: zublime_point_of_sale
+#: model:ir.model,name:zublime_point_of_sale.model_pos_payment_method
+msgid "Point of Sale Payment Methods"
+msgstr "Métodos de pago en el punto de venta "
+
+#. module: zublime_point_of_sale
+#. openerp-web
+#: code:addons/zublime_point_of_sale/static/src/xml/OrderReceipt.xml:0
+#, python-format
+msgid "TOTAL TO PAY"
+msgstr "TOTAL A PAGAR"
