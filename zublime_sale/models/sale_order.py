@@ -7,6 +7,7 @@ class SaleOrder(models.Model):
     _inherit = 'sale.order'
 
     is_paid = fields.Boolean('Paid', compute='_get_sale_paid', store=True)
+    paid = fields.Boolean('Prueba')
 
     def connection_postman(self, id):
         company = self.env['res.company'].sudo().search([('zublime', '=', True),
