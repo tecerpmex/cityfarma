@@ -30,7 +30,16 @@
                 </label>
                 <field name="payment_date" position="before">
                     <field name="fee" invisible="1"/>
-                    <field name="tariff" attrs="{'invisible': [('fee', '=', 0)]}" foce_save="1"/>
+                    <label for="tariff"
+                            attrs="{'invisible': [('fee', '=', 0)]}"/>
+                    <div name="amount_div1" class="o_row"
+                            attrs="{'invisible': [('fee', '=', 0)]}">
+                        %<field name="fee"/>=
+                        <field name="tariff" readonly="1" force_save="1"/>
+                        <field name="currency_id"
+                                options="{'no_create': True, 'no_open': True}"
+                                groups="base.group_multi_currency"/>
+                    </div>
                     <field name="amount_fee" attrs="{'invisible': [('fee', '=', 0)]}" foce_save="1"/>
                     <field name="cash_received"/>
                     <field name="change_return"/>
