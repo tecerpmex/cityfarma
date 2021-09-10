@@ -1,0 +1,12 @@
+.pos  .paymentline {
+    flex-wrap: wrap;
+}
+.paymentline .payment-text {
+    flex-grow: 1;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+.paymentline .payment-total {
+    margin-left: 10px;
+    margin-right: 10px;
+}
