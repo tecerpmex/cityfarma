@@ -18,12 +18,12 @@ msgstr ""
 #. module: zublime_sale
 #: model_terms:ir.ui.view,arch_db:zublime_sale.res_config_settings_view_desc_form
 msgid "Calculate discount by price max"
-msgstr "Calcular el porcentaje de reducción tomando como base el precio máximo de venta al público"
+msgstr "Calcular el porcentaje de reducción tomando como base el precio máximo de venta al público sin sumar otros descuentos"
 
 #. module: zublime_sale
 #: model_terms:ir.ui.view,arch_db:zublime_sale.res_config_settings_view_desc_form
 msgid "Calculate discount by subtotal"
-msgstr "Calcular el porcentaje de reducción tomando como base el subtotal del producto"
+msgstr "Calcular el porcentaje de reducción tomando como base el precio máximo de venta al público y el subtotal (agregando otros descuentos)"
 
 #. module: zublime_sale
 #: model:ir.model,name:zublime_sale.model_res_company
@@ -43,12 +43,12 @@ msgstr "Desc1.%"
 #. module: zublime_sale
 #: model:res.groups,name:zublime_sale.group_discount_price_max
 msgid "Discount by price max"
-msgstr "Reducción (%) por precio máximo de venta al público"
+msgstr "Reducción (%) por precio máximo de venta al público sin considerar el subtotal (otros descuentos)"
 
 #. module: zublime_sale
 #: model:res.groups,name:zublime_sale.group_discount_subtotal
 msgid "Discount by subtotal"
-msgstr "Reducción (%) por subtotal del producto"
+msgstr "Reducción (%) por precio de venta máximo al público y subtotal del producto"
 
 #. module: zublime_sale
 #: model:ir.model.fields,field_description:zublime_sale.field_account_move_line__discount_one
@@ -58,12 +58,12 @@ msgstr "Desc1.%"
 #. module: zublime_sale
 #: model:ir.model.fields,field_description:zublime_sale.field_res_config_settings__group_discount_subtotal
 msgid "Discounts by subtotal"
-msgstr "Reducción (%) por subtotal del producto"
+msgstr "Reducción (%) por precio de venta máximo al público y subtotal del producto"
 
 #. module: zublime_sale
 #: model:ir.model.fields,field_description:zublime_sale.field_res_config_settings__group_discount_price_max
 msgid "Discounts price max"
-msgstr "Reducción (%) por precio máximo de venta al público"
+msgstr "Reducción (%) por precio máximo de venta al público sin considerar el subtotal (otros descuentos)"
 
 #. module: zublime_sale
 #: model:ir.model.fields,field_description:zublime_sale.field_account_move_line__display_name
