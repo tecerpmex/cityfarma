@@ -18,12 +18,12 @@ msgstr ""
 #. module: zublime_sale
 #: model_terms:ir.ui.view,arch_db:zublime_sale.res_config_settings_view_desc_form
 msgid "Calculate discount by price max"
-msgstr "Calcular el descuento por el precio máximo"
+msgstr "Calcular el porcentaje de reducción tomando como base el precio máximo de venta al público"
 
 #. module: zublime_sale
 #: model_terms:ir.ui.view,arch_db:zublime_sale.res_config_settings_view_desc_form
 msgid "Calculate discount by subtotal"
-msgstr "Calcular el descuento por el subtotal"
+msgstr "Calcular el porcentaje de reducción tomando como base el subtotal del producto"
 
 #. module: zublime_sale
 #: model:ir.model,name:zublime_sale.model_res_company
@@ -43,12 +43,12 @@ msgstr "Desc1.%"
 #. module: zublime_sale
 #: model:res.groups,name:zublime_sale.group_discount_price_max
 msgid "Discount by price max"
-msgstr "Descuento por precio máximo"
+msgstr "Reducción (%) por precio máximo de venta al público"
 
 #. module: zublime_sale
 #: model:res.groups,name:zublime_sale.group_discount_subtotal
 msgid "Discount by subtotal"
-msgstr "Descuento por subtotal"
+msgstr "Reducción (%) por subtotal del producto"
 
 #. module: zublime_sale
 #: model:ir.model.fields,field_description:zublime_sale.field_account_move_line__discount_one
@@ -58,12 +58,12 @@ msgstr "Desc1.%"
 #. module: zublime_sale
 #: model:ir.model.fields,field_description:zublime_sale.field_res_config_settings__group_discount_subtotal
 msgid "Discounts by subtotal"
-msgstr "Descuento por subtotal"
+msgstr "Reducción (%) por subtotal del producto"
 
 #. module: zublime_sale
 #: model:ir.model.fields,field_description:zublime_sale.field_res_config_settings__group_discount_price_max
 msgid "Discounts price max"
-msgstr "Descuento por precio máximo"
+msgstr "Reducción (%) por precio máximo de venta al público"
 
 #. module: zublime_sale
 #: model:ir.model.fields,field_description:zublime_sale.field_account_move_line__display_name
@@ -139,7 +139,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:zublime_sale.field_sale_order_line__discount_one
 #: model:ir.model.fields,field_description:zublime_sale.field_sale_order_line__discount_subtotal
 msgid "Reduction (%)"
-msgstr "Rebaja (%) "
+msgstr "Reducción (%)"
 
 #. module: zublime_sale
 #: model:ir.model,name:zublime_sale.model_sale_order
