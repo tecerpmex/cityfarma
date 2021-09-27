@@ -9,7 +9,7 @@
     "category": "account",
     "complexity": "normal",
     "description": """ """,
-    "depends": ["account", "account_accountant"],
+    "depends": ["account"],
     "data": [
         "security/ir.model.access.csv",
         "views/zublime_payment_extra_fee_view.xml",
