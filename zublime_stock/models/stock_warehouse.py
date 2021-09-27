@@ -52,7 +52,7 @@ class StockPicking(models.Model):
             service = '/dispatch-order/notify-packing-action'
         elif self.picking_type_id.sequence_code == 'PICK':
             service = '/dispatch-order/notify-picking-action'
-        if sercice:
+        if service:
             url = company.url_zublime + service
             data = {
                 'id': self.id,
