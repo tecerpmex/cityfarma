@@ -15,6 +15,9 @@
         'views/inherited_pos_payment_method_views.xml',
         'views/pos_templates.xml',
     ],
-    'qweb': ['static/src/xml/OrderReceipt.xml'],
+    'qweb': [
+        'static/src/xml/OrderReceipt.xml',
+        'static/src/xml/PaymentScreenPaymentLines.xml',
+    ],
     'demo': [],
 }
