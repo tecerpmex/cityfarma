@@ -6,7 +6,8 @@ class SaleOrderLine(models.Model):
     _inherit = 'sale.order.line'
 
     maximum_price = fields.Float('Maximum retail price', digits='Maximum retail price', default=0.0)
-    discount_one = fields.Float(string='Discount1 (%)', digits='Discount', default=0.0)
+    discount_one = fields.Float(string='Reduction (%)', digits='Discount', default=0.0)
+    discount_subtotal = fields.Float(string='Reduction (%)', digits='Discount', default=0.0)
 
     @api.onchange('product_id')
     def product_id_change(self):
@@ -18,7 +19,14 @@ class SaleOrderLine(models.Model):
 
     @api.onchange('maximum_price', 'price_unit')
     def _onchange_discount_one(self):
-        for account in self:
-            if account.maximum_price and account.price_unit:
-                discount1 = account.maximum_price - account.price_unit
-                account.discount_one = discount1/account.maximum_price*100
+        for line in self:
+            if line.maximum_price and line.price_unit:
+                discount1 = line.maximum_price - line.price_unit
+                line.discount_one = discount1/line.maximum_price*100
+
+    @api.onchange('maximum_price', 'price_unit', 'product_uom_qty', 'discount')
+    def _onchange_discount_subtotal(self):
+        for line in self:
+            if line.price_subtotal and line.maximum_price:
+                discount1 = line.maximum_price * line.product_uom_qty
+                line.discount_subtotal = (discount1 - line.price_subtotal)/discount1 * 100
