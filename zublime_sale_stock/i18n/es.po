@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 14.0+e-20210402\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-08-11 05:22+0000\n"
-"PO-Revision-Date: 2021-08-11 01:26-0400\n"
+"POT-Creation-Date: 2021-09-30 23:25+0000\n"
+"PO-Revision-Date: 2021-09-30 19:32-0400\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -18,19 +18,63 @@ msgstr ""
 "X-Generator: Poedit 2.3\n"
 
 #. module: zublime_sale_stock
+#: model_terms:ir.ui.view,arch_db:zublime_sale_stock.view_sale_stock_action_confirm
+msgid "Cancel"
+msgstr "Cancelar"
+
+#. module: zublime_sale_stock
+#: model:ir.model.fields,field_description:zublime_sale_stock.field_sale_stock_action_confirm__create_uid
+msgid "Created by"
+msgstr "Creado por"
+
+#. module: zublime_sale_stock
+#: model:ir.model.fields,field_description:zublime_sale_stock.field_sale_stock_action_confirm__create_date
+msgid "Created on"
+msgstr "Creado en"
+
+#. module: zublime_sale_stock
+#: model:ir.model.fields,field_description:zublime_sale_stock.field_account_move__display_name
 #: model:ir.model.fields,field_description:zublime_sale_stock.field_sale_order__display_name
+#: model:ir.model.fields,field_description:zublime_sale_stock.field_sale_stock_action_confirm__display_name
+#: model:ir.model.fields,field_description:zublime_sale_stock.field_stock_move__display_name
 msgid "Display Name"
 msgstr "Nombre para mostrar"
 
 #. module: zublime_sale_stock
+#: model:ir.model.fields,field_description:zublime_sale_stock.field_account_move__id
 #: model:ir.model.fields,field_description:zublime_sale_stock.field_sale_order__id
+#: model:ir.model.fields,field_description:zublime_sale_stock.field_sale_stock_action_confirm__id
+#: model:ir.model.fields,field_description:zublime_sale_stock.field_stock_move__id
 msgid "ID"
 msgstr "ID"
 
 #. module: zublime_sale_stock
+#: model:ir.model,name:zublime_sale_stock.model_account_move
+msgid "Journal Entry"
+msgstr "Entrada de diario"
+
+#. module: zublime_sale_stock
+#: model:ir.model.fields,field_description:zublime_sale_stock.field_account_move____last_update
 #: model:ir.model.fields,field_description:zublime_sale_stock.field_sale_order____last_update
+#: model:ir.model.fields,field_description:zublime_sale_stock.field_sale_stock_action_confirm____last_update
+#: model:ir.model.fields,field_description:zublime_sale_stock.field_stock_move____last_update
 msgid "Last Modified on"
 msgstr "Última modificación el"
+
+#. module: zublime_sale_stock
+#: model:ir.model.fields,field_description:zublime_sale_stock.field_sale_stock_action_confirm__write_uid
+msgid "Last Updated by"
+msgstr "Última actualización por"
+
+#. module: zublime_sale_stock
+#: model:ir.model.fields,field_description:zublime_sale_stock.field_sale_stock_action_confirm__write_date
+msgid "Last Updated on"
+msgstr "Ultima actualización en"
+
+#. module: zublime_sale_stock
+#: model_terms:ir.ui.view,arch_db:zublime_sale_stock.view_sale_stock_action_confirm
+msgid "Parameters"
+msgstr "Parámetros"
 
 #. module: zublime_sale_stock
 #: code:addons/zublime_sale_stock/models/sale_order.py:0
@@ -39,10 +83,39 @@ msgid ""
 "Requires an administrator to confirm it due to products without "
 "availability."
 msgstr ""
-"Requiere que un administrador lo confirme debido a productos "
-"sin disponibilidad."
+"Requiere que un administrador lo confirme debido a productos sin "
+"disponibilidad."
 
 #. module: zublime_sale_stock
 #: model:ir.model,name:zublime_sale_stock.model_sale_order
 msgid "Sales Order"
 msgstr "Órdenes de venta"
+
+#. module: zublime_sale_stock
+#: model:ir.model,name:zublime_sale_stock.model_stock_move
+msgid "Stock Move"
+msgstr "Movimiento de stock"
+
+#. module: zublime_sale_stock
+#: model_terms:ir.ui.view,arch_db:zublime_sale_stock.view_sale_stock_action_confirm
+msgid ""
+"There are products without availability. Do you want to confirm this order?."
+msgstr "Hay productos sin disponibilidad. ¿Quieres confirmar este pedido?."
+
+#. module: zublime_sale_stock
+#: model_terms:ir.ui.view,arch_db:zublime_sale_stock.view_sale_stock_action_confirm
+msgid "To accept"
+msgstr "Aceptar"
+
+#. module: zublime_sale_stock
+#: model:ir.actions.act_window,name:zublime_sale_stock.action_sale_stock_action_confirm
+msgid "Warning"
+msgstr "Advertencia"
+
+#. module: zublime_sale_stock
+#: model:ir.model,name:zublime_sale_stock.model_sale_stock_action_confirm
+msgid ""
+"Warning administrator to confirm it due to products without availability"
+msgstr ""
+"Advertencia al administrador para confirmarlo por productos sin "
+"disponibilidad"
