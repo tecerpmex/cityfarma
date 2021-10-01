@@ -230,4 +230,4 @@ msgstr "Total Factura: &amp;nbsp;"
 #. module: zublime_account
 #: model_terms:ir.ui.view,arch_db:zublime_account.zublime_payment_extra_fee_pdf
 msgid "Total con Tarifa:"
-msgstr "Total con Comisión por forma de pago:"
+msgstr "Total con comisión por forma de pago:"
