@@ -8,6 +8,10 @@ class PaymentMethod(models.Model):
     _inherit = 'l10n_mx_edi.payment.method'
 
     tariff = fields.Float(string="Tariff")
+    effective_type = fields.Boolean(
+        string='Effective type',
+    )
+    
 
 
 class AccountPaymentRegister(models.TransientModel):
@@ -41,6 +45,9 @@ class AccountPaymentRegister(models.TransientModel):
         string="Change to return", 
         readonly=True,
         )
+    effective_type = fields.Boolean(
+        related='l10n_mx_edi_payment_method_id.effective_type',
+    )
      
     #Associated methods sprint 2 requirement 3 
     @api.onchange('amount', 'l10n_mx_edi_payment_method_id')
