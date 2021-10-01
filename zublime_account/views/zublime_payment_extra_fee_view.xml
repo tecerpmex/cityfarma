@@ -42,7 +42,7 @@
                                 options="{'no_create': True, 'no_open': True}"
                                 groups="base.group_multi_currency"/>
                     </div>
-                    <field name="amount_fee" attrs="{'invisible': [('fee', '=', 0)]}" foce_save="1"/>
+                    <field name="amount_fee" attrs="{'invisible': [('fee', '=', 0)]}" readonly="1" foce_save="1"/>
                     <field name="cash_received" attrs="{'invisible': [('effective_type', '=', False)]}"/>
                     <field name="change_return" attrs="{'invisible': [('effective_type', '=', False)]}"/>
                 </field>

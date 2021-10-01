@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 14.0+e-20210402\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-01 03:33+0000\n"
-"PO-Revision-Date: 2021-10-01 03:33+0000\n"
+"POT-Creation-Date: 2021-10-01 23:21+0000\n"
+"PO-Revision-Date: 2021-10-01 19:26-0400\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -26,6 +26,16 @@ msgstr "&amp;nbsp;&amp;nbsp;&amp;nbsp;"
 #: model_terms:ir.ui.view,arch_db:zublime_account.custom_header_zublime_payment_extra
 msgid "<b>Recibo</b>"
 msgstr "<b>Recibo</b>"
+
+#. module: zublime_account
+#: model_terms:ir.ui.view,arch_db:zublime_account.report_invoice_document_base
+msgid "<br/>Commission payment method ("
+msgstr "<br/>Comisión del método de pago  ("
+
+#. module: zublime_account
+#: model_terms:ir.ui.view,arch_db:zublime_account.report_invoice_document_base
+msgid "<br/>Total charged ="
+msgstr "<br/> Total cobrado ="
 
 #. module: zublime_account
 #: model_terms:ir.ui.view,arch_db:zublime_account.report_header_custom
@@ -113,6 +123,7 @@ msgid "Change to return"
 msgstr "Cambio para devolver"
 
 #. module: zublime_account
+#: model:ir.model.fields,field_description:zublime_account.field_account_move__display_name
 #: model:ir.model.fields,field_description:zublime_account.field_account_payment__display_name
 #: model:ir.model.fields,field_description:zublime_account.field_account_payment_register__display_name
 #: model:ir.model.fields,field_description:zublime_account.field_l10n_mx_edi_payment_method__display_name
@@ -132,6 +143,7 @@ msgid "Fecha del Pago:&amp;nbsp;"
 msgstr "Fecha del Pago:"
 
 #. module: zublime_account
+#: model:ir.model.fields,field_description:zublime_account.field_account_move__id
 #: model:ir.model.fields,field_description:zublime_account.field_account_payment__id
 #: model:ir.model.fields,field_description:zublime_account.field_account_payment_register__id
 #: model:ir.model.fields,field_description:zublime_account.field_l10n_mx_edi_payment_method__id
@@ -145,6 +157,12 @@ msgid "Importe del pago:"
 msgstr "Importe del pago:"
 
 #. module: zublime_account
+#: model:ir.model,name:zublime_account.model_account_move
+msgid "Journal Entry"
+msgstr "Entrada de diario"
+
+#. module: zublime_account
+#: model:ir.model.fields,field_description:zublime_account.field_account_move____last_update
 #: model:ir.model.fields,field_description:zublime_account.field_account_payment____last_update
 #: model:ir.model.fields,field_description:zublime_account.field_account_payment_register____last_update
 #: model:ir.model.fields,field_description:zublime_account.field_l10n_mx_edi_payment_method____last_update
