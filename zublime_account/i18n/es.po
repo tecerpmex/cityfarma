@@ -85,7 +85,8 @@ msgstr "<strong>Método de pago:</strong>"
 #. module: zublime_account
 #: model_terms:ir.ui.view,arch_db:zublime_account.report_header_custom
 msgid "<strong>Tarrif: </strong>"
-msgstr "<strong>Comisión por forma de pago:</strong>"
+msgstr "<strong>Comisión por forma de
+pago:</strong>"
 
 #. module: zublime_account
 #: model_terms:ir.ui.view,arch_db:zublime_account.report_header_custom
@@ -199,7 +200,8 @@ msgstr "Reporte"
 #. module: zublime_account
 #: model_terms:ir.ui.view,arch_db:zublime_account.zublime_payment_extra_fee_pdf
 msgid "Tarifa:"
-msgstr "Comisión por forma de pago:"
+msgstr "Comisión por forma de
+pago:"
 
 #. module: zublime_account
 #: model:ir.model.fields,field_description:zublime_account.field_account_payment__fee
@@ -208,12 +210,14 @@ msgstr "Comisión por forma de pago:"
 #: model:ir.model.fields,field_description:zublime_account.field_l10n_mx_edi_payment_method__tariff
 #: model_terms:ir.ui.view,arch_db:zublime_account.view_account_payment_form_pa_inherit
 msgid "Tariff"
-msgstr "Comisión por forma de pago"
+msgstr "Comisión por forma de
+pago"
 
 #. module: zublime_account
 #: model:ir.model.fields,field_description:zublime_account.field_account_payment_register__tariff
 msgid "Tariff %"
-msgstr "Comisión por forma de pago"
+msgstr "Comisión por forma de
+pago"
 
 #. module: zublime_account
 #: model:ir.model.fields,field_description:zublime_account.field_account_payment__amount_fee
@@ -230,4 +234,5 @@ msgstr "Total Factura: &amp;nbsp;"
 #. module: zublime_account
 #: model_terms:ir.ui.view,arch_db:zublime_account.zublime_payment_extra_fee_pdf
 msgid "Total con Tarifa:"
-msgstr "Total con Comisión por forma de pago:"
+msgstr "Total con comisión por forma de
+pago:"
