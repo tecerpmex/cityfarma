@@ -169,7 +169,8 @@
                                     style="padding:0  margin:0 !important;"
                                     width='40%'>
                                     <h5>
-                                        Tarifa:
+                                        Tarifa (
+                                        <span t-esc="'{0:.2f}'.format(v[10])"/> %):
                                     </h5>
                                 </td>
                                 <td class="text-right"
