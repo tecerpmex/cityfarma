@@ -8,6 +8,10 @@ class PaymentMethod(models.Model):
     _inherit = 'l10n_mx_edi.payment.method'
 
     tariff = fields.Float(string="Tariff")
+    effective_type = fields.Boolean(
+        string='Effective type',
+    )
+    
 
 
 class AccountPaymentRegister(models.TransientModel):
@@ -16,11 +20,11 @@ class AccountPaymentRegister(models.TransientModel):
     # Associated fields sprint 2 requirement 3
     tariff = fields.Float(
         string="Tariff %", 
-        readonly=True,
+        readonly=False,
         )
     amount_fee = fields.Float(
         string="Total Amount",
-        readonly=True,
+        readonly=False,
         )
     fee = fields.Float(
         related='l10n_mx_edi_payment_method_id.tariff',
@@ -41,6 +45,9 @@ class AccountPaymentRegister(models.TransientModel):
         string="Change to return", 
         readonly=True,
         )
+    effective_type = fields.Boolean(
+        related='l10n_mx_edi_payment_method_id.effective_type',
+    )
      
     #Associated methods sprint 2 requirement 3 
     @api.onchange('amount', 'l10n_mx_edi_payment_method_id')
@@ -81,8 +88,16 @@ class AccountPaymentRegister(models.TransientModel):
 class AccountPayment(models.Model):
     _inherit = "account.payment"
 
-    tariff = fields.Float(string="Tariff")
-    amount_fee = fields.Float(string="Total Amount", )
+    tariff = fields.Float(
+        string="Tariff",
+        store=True,
+        compute='_compute_amount'
+        )
+    amount_fee = fields.Float(
+        string="Total Amount",
+        store=True,
+        compute='_compute_amount' 
+        )
     fee = fields.Float(
         related='l10n_mx_edi_payment_method_id.tariff',
     )
@@ -91,3 +106,43 @@ class AccountPayment(models.Model):
     def _onchange_amount(self):
         self.tariff = self.amount * (self.l10n_mx_edi_payment_method_id.tariff / 100)
         self.amount_fee = self.amount + self.tariff
+    
+    
+    @api.depends('amount', 'l10n_mx_edi_payment_method_id')
+    def _compute_amount(self):
+        self.tariff = self.amount * (self.l10n_mx_edi_payment_method_id.tariff / 100)
+        self.amount_fee = self.amount + self.tariff 
+    
+
+class AccountMove(models.Model):
+    _inherit = 'account.move'
+
+    def _get_reconciled_info_JSON_values(self):
+        self.ensure_one()
+
+        reconciled_vals = []
+        for partial, amount, counterpart_line in self._get_reconciled_invoices_partials():
+            if counterpart_line.move_id.ref:
+                reconciliation_ref = '%s (%s)' % (counterpart_line.move_id.name, counterpart_line.move_id.ref)
+            else:
+                reconciliation_ref = counterpart_line.move_id.name
+
+            reconciled_vals.append({
+                'name': counterpart_line.name,
+                'journal_name': counterpart_line.journal_id.name,
+                'amount': amount,
+                'currency': self.currency_id.symbol,
+                'digits': [69, self.currency_id.decimal_places],
+                'position': self.currency_id.position,
+                'date': counterpart_line.date,
+                'fee': counterpart_line.payment_id.fee,
+                'tariff': counterpart_line.payment_id.tariff,
+                'amount_fee': counterpart_line.payment_id.amount_fee,
+                'payment_id': counterpart_line.id,
+                'partial_id': partial.id,
+                'account_payment_id': counterpart_line.payment_id.id,
+                'payment_method_name': counterpart_line.payment_id.payment_method_id.name if counterpart_line.journal_id.type == 'bank' else None,
+                'move_id': counterpart_line.move_id.id,
+                'ref': reconciliation_ref,
+            })
+        return reconciled_vals
