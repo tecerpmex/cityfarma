@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 14.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-07-07 01:30+0000\n"
-"PO-Revision-Date: 2021-07-07 01:30+0000\n"
+"POT-Creation-Date: 2021-09-09 15:50+0000\n"
+"PO-Revision-Date: 2021-09-09 15:50+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -16,20 +16,62 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: zublime_sale
+#: model_terms:ir.ui.view,arch_db:zublime_sale.res_config_settings_view_desc_form
+msgid "Calculate discount by price max"
+msgstr "Calcular el porcentaje de reducción tomando como base el precio máximo de venta al público sin sumar otros descuentos"
+
+#. module: zublime_sale
+#: model_terms:ir.ui.view,arch_db:zublime_sale.res_config_settings_view_desc_form
+msgid "Calculate discount by subtotal"
+msgstr "Calcular el porcentaje de reducción tomando como base el precio máximo de venta al público y el subtotal (agregando otros descuentos)"
+
+#. module: zublime_sale
+#: model:ir.model,name:zublime_sale.model_res_company
+msgid "Companies"
+msgstr "Compañías"
+
+#. module: zublime_sale
+#: model:ir.model,name:zublime_sale.model_res_config_settings
+msgid "Config Settings"
+msgstr "Opciones de configuración"
+
+#. module: zublime_sale
 #: model_terms:ir.ui.view,arch_db:zublime_sale.view_account_move_form_inherit
 msgid "Disc1.%"
 msgstr "Desc1.%"
 
 #. module: zublime_sale
+#: model:res.groups,name:zublime_sale.group_discount_price_max
+msgid "Discount by price max"
+msgstr "Reducción (%) por precio máximo de venta al público sin considerar el subtotal (otros descuentos)"
+
+#. module: zublime_sale
+#: model:res.groups,name:zublime_sale.group_discount_subtotal
+msgid "Discount by subtotal"
+msgstr "Reducción (%) por precio de venta máximo al público y subtotal del producto"
+
+#. module: zublime_sale
 #: model:ir.model.fields,field_description:zublime_sale.field_account_move_line__discount_one
-#: model:ir.model.fields,field_description:zublime_sale.field_sale_order_line__discount_one
 msgid "Discount1 (%)"
 msgstr "Desc1.%"
+
+#. module: zublime_sale
+#: model:ir.model.fields,field_description:zublime_sale.field_res_config_settings__group_discount_subtotal
+msgid "Discounts by subtotal"
+msgstr "Reducción (%) por precio de venta máximo al público y subtotal del producto"
+
+#. module: zublime_sale
+#: model:ir.model.fields,field_description:zublime_sale.field_res_config_settings__group_discount_price_max
+msgid "Discounts price max"
+msgstr "Reducción (%) por precio máximo de venta al público sin considerar el subtotal (otros descuentos)"
 
 #. module: zublime_sale
 #: model:ir.model.fields,field_description:zublime_sale.field_account_move_line__display_name
 #: model:ir.model.fields,field_description:zublime_sale.field_product_product__display_name
 #: model:ir.model.fields,field_description:zublime_sale.field_product_template__display_name
+#: model:ir.model.fields,field_description:zublime_sale.field_res_company__display_name
+#: model:ir.model.fields,field_description:zublime_sale.field_res_config_settings__display_name
+#: model:ir.model.fields,field_description:zublime_sale.field_sale_order__display_name
 #: model:ir.model.fields,field_description:zublime_sale.field_sale_order_line__display_name
 msgid "Display Name"
 msgstr "Nombre mostrado"
@@ -38,6 +80,9 @@ msgstr "Nombre mostrado"
 #: model:ir.model.fields,field_description:zublime_sale.field_account_move_line__id
 #: model:ir.model.fields,field_description:zublime_sale.field_product_product__id
 #: model:ir.model.fields,field_description:zublime_sale.field_product_template__id
+#: model:ir.model.fields,field_description:zublime_sale.field_res_company__id
+#: model:ir.model.fields,field_description:zublime_sale.field_res_config_settings__id
+#: model:ir.model.fields,field_description:zublime_sale.field_sale_order__id
 #: model:ir.model.fields,field_description:zublime_sale.field_sale_order_line__id
 msgid "ID"
 msgstr ""
@@ -51,6 +96,9 @@ msgstr "Apunte contable"
 #: model:ir.model.fields,field_description:zublime_sale.field_account_move_line____last_update
 #: model:ir.model.fields,field_description:zublime_sale.field_product_product____last_update
 #: model:ir.model.fields,field_description:zublime_sale.field_product_template____last_update
+#: model:ir.model.fields,field_description:zublime_sale.field_res_company____last_update
+#: model:ir.model.fields,field_description:zublime_sale.field_res_config_settings____last_update
+#: model:ir.model.fields,field_description:zublime_sale.field_sale_order____last_update
 #: model:ir.model.fields,field_description:zublime_sale.field_sale_order_line____last_update
 msgid "Last Modified on"
 msgstr "Última modificación el"
@@ -68,6 +116,11 @@ msgid "Maximum retail price"
 msgstr "Precio máximo de venta al público"
 
 #. module: zublime_sale
+#: model:ir.model.fields,field_description:zublime_sale.field_sale_order__is_paid
+msgid "Paid"
+msgstr "Pagado"
+
+#. module: zublime_sale
 #: model:ir.model,name:zublime_sale.model_product_product
 msgid "Product"
 msgstr "Producto"
@@ -78,6 +131,37 @@ msgid "Product Template"
 msgstr "Plantilla de producto"
 
 #. module: zublime_sale
+#: model:ir.model.fields,field_description:zublime_sale.field_sale_order__paid
+msgid "Prueba"
+msgstr ""
+
+#. module: zublime_sale
+#: model:ir.model.fields,field_description:zublime_sale.field_sale_order_line__discount_one
+#: model:ir.model.fields,field_description:zublime_sale.field_sale_order_line__discount_subtotal
+msgid "Reduction (%)"
+msgstr "Reducción (%)"
+
+#. module: zublime_sale
+#: model:ir.model,name:zublime_sale.model_sale_order
+msgid "Sales Order"
+msgstr "Pedido de venta"
+
+#. module: zublime_sale
 #: model:ir.model,name:zublime_sale.model_sale_order_line
 msgid "Sales Order Line"
 msgstr "Línea de pedido de venta"
+
+#. module: zublime_sale
+#: model:ir.model.fields,field_description:zublime_sale.field_res_company__url_zublime
+msgid "Url service"
+msgstr ""
+
+#. module: zublime_sale
+#: model:ir.model.fields,field_description:zublime_sale.field_res_company__zublime
+msgid "Zublime"
+msgstr ""
+
+#. module: zublime_sale
+#: model_terms:ir.ui.view,arch_db:zublime_sale.Partner_form
+msgid "Zublime service"
+msgstr ""

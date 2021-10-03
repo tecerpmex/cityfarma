@@ -7,6 +7,7 @@ class SaleOrder(models.Model):
     _inherit = 'sale.order'
 
     is_paid = fields.Boolean('Paid', compute='_get_sale_paid', store=True)
+    paid = fields.Boolean('Prueba')
 
     def connection_postman(self, id):
         company = self.env['res.company'].sudo().search([('zublime', '=', True),
@@ -61,6 +62,19 @@ class SaleOrder(models.Model):
         headers = {"Content-type": "application/x-www-form-urlencoded"}
         req = requests.request(method='POST', url=url, data=data, headers=headers)
         req.json()
+
+    def update_prices(self):
+        self.ensure_one()
+        res = super(SaleOrder, self).update_prices()
+        for line in self.order_line.filtered(lambda line: not line.display_type):
+            discount1 = line.maximum_price - line.price_unit
+            desc1 = discount1/line.maximum_price*100
+
+            sub1 = line.maximum_price * line.product_uom_qty
+            subtotal = (sub1 - line.price_subtotal)/sub1 * 100
+            line.write({'discount_one': desc1, 'discount_subtotal': subtotal})
+
+        return res
 
 
 class ResCompany(models.Model):
