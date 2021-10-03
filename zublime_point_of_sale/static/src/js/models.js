@@ -3,6 +3,7 @@ odoo.define('zublime_pos_extra_fee.models', function (require) {
 
     const models = require('point_of_sale.models');
     const utils = require('web.utils');
+    const field_utils = require('web.field_utils');
     const round_pr = utils.round_precision;
 
     models.load_fields('pos.payment.method', ['extra_fee']);
@@ -11,7 +12,13 @@ odoo.define('zublime_pos_extra_fee.models', function (require) {
     models.Paymentline = models.Paymentline.extend({
         get_extra_fee: function () {
             return this.amount * this.payment_method.extra_fee / 100;
-        },        
+        },
+        get_extra_fee_str: function () {
+            return field_utils.format.float(this.payment_method.extra_fee, {digits: [69, this.pos.currency.decimals]});
+        },
+        get_amount_with_extra_fee: function () {
+            return round_pr(this.amount + this.get_extra_fee(), this.pos.currency.rounding);
+        },      
     });
 
     const _super_order = models.Order.prototype;

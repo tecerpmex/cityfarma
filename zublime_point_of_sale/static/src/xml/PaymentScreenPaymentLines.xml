@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='utf-8'?>
+
+<templates id="template" xml:space="preserve">
+    <t t-name="PaymentScreenPaymentLines" t-inherit="point_of_sale.PaymentScreenPaymentLines" t-inherit-mode="extension" owl="1">
+
+        <xpath expr="//div[hasclass('paymentlines')]//t[@t-foreach='props.paymentLines']//t[@t-if='line.selected']//div" position="inside">
+            <t t-if="line.payment_method.extra_fee > 0">
+
+                    <div class="payment-text">
+                        Total to pay (+<span t-esc="line.get_extra_fee_str()" />%):
+                    </div>
+                    <div class="payment-total">
+                        <b><t t-esc="env.pos.format_currency_no_symbol(line.get_amount_with_extra_fee())" /></b>
+                    </div>
+
+            </t>
+        </xpath>
+
+    </t>
+</templates>
