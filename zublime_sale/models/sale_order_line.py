@@ -30,3 +30,14 @@ class SaleOrderLine(models.Model):
             if line.price_subtotal and line.maximum_price:
                 discount1 = line.maximum_price * line.product_uom_qty
                 line.discount_subtotal = (discount1 - line.price_subtotal)/discount1 * 100
+
+    def _prepare_invoice_line(self, **optional_values):
+        res = super(SaleOrderLine, self)._prepare_invoice_line(**optional_values)
+        discount = 0.0
+        if self.discount_one:
+            discount = self.discount_one
+        else:
+            discount = self.discount_subtotal
+        res.update({'maximum_price': self.maximum_price, 'discount_one': discount})
+        return res
+
