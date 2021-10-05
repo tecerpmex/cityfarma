@@ -8,7 +8,7 @@
                 <div class="pos-receipt-right-align">--------</div>
                 <br/>
                 <div>
-                    Card payment commission (3.5%)<span t-esc="env.pos.format_currency(receipt.total_extra_fee)" class="pos-receipt-right-align"/>
+                    Card payment commission (<span t-esc="receipt.extra_fee1"/> %) <span t-esc="env.pos.format_currency(receipt.total_extra_fee)" class="pos-receipt-right-align"/>
                 </div>
                 <br/>
                 <div class="pos-receipt-amount">
