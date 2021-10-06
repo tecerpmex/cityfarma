@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from odoo import api, fields, models, _
 import requests
+from odoo.tests import Form
 
 
 class StockWarehouse(models.Model):
@@ -36,8 +37,6 @@ class StockWarehouse(models.Model):
                 'locations': location_res,
             })
         return res
-<<<<<<< HEAD
-=======
 
 
 class StockPicking(models.Model):
@@ -66,4 +65,16 @@ class StockPicking(models.Model):
         res = super(StockPicking, self).button_validate()
         self.connection_postman()
         return res
->>>>>>> f78966431045f580db9b24b59c3311ddb4f17d8a
+
+    def _pre_action_done_hook(self):
+        if not self.env.context.get('skip_immediate'):
+            pickings_to_immediate = self._check_immediate()
+            if pickings_to_immediate:
+                wiz = pickings_to_immediate._action_generate_immediate_wizard(show_transfers=self._should_show_transfers())
+                wiz = Form(self.env['stock.immediate.transfer'].with_context(wiz['context'])).save().process()
+
+        if not self.env.context.get('skip_backorder'):
+            pickings_to_backorder = self._check_backorder()
+            if pickings_to_backorder:
+                return pickings_to_backorder._action_generate_backorder_wizard(show_transfers=self._should_show_transfers())
+        return True
