@@ -9,7 +9,7 @@ class SaleOrder(models.Model):
     def action_confirm(self):
         i = 0
         for line in self.order_line:
-                if not line.product_id.qty_available > 0:
+                if line.virtual_available_at_date < line.product_uom_qty:
                     i += 1
         if i > 0:
             if not self.env.user.has_group('sales_team.group_sale_manager'):

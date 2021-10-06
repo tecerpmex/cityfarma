@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+    
+        <record id="product_pricelist_view_inherited" model="ir.ui.view">
+            <field name="name">product.pricelist.form.inherited</field>
+            <field name="model">product.pricelist</field>
+            <field name="inherit_id" ref="product.product_pricelist_view" />
+            <field name="type">form</field>
+            <field name="mode">extension</field>
+            <field name="priority" eval="16" />
+            <field name="active" eval="True" />
+            <field name="arch" type="xml"> 
+                <xpath expr="//widget[@name='web_ribbon']" position="after">
+                    <div class="oe_button_box" name="button_box">
+                        <button name="get_pricelist_item"
+                            type="object"
+                            class="oe_stat_button"
+                            icon="fa-pencil-square-o"/>
+                    </div>
+                </xpath>   
+            </field>
+        </record>
+        
+        <record id="product_pricelist_item_view_search_inherited" model="ir.ui.view">
+            <field name="name">product.pricelist.item.search inherited</field>
+            <field name="model">product.pricelist.item</field>
+            <field name="inherit_id" ref="product.product_pricelist_item_view_search" />
+            <field name="type">search</field>
+            <field name="mode">extension</field>
+            <field name="priority" eval="16" />
+            <field name="active" eval="True" />
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='pricelist_id']" position="before">
+                    <field name="product_tmpl_id" string="Products template"/>  
+                    <field name="product_id" string="Products"/>                  
+                </xpath>               
+            </field>
+        </record>
+        
+
+    </data>
+</odoo>
