@@ -11,7 +11,6 @@ class PaymentMethod(models.Model):
     effective_type = fields.Boolean(
         string='Effective type',
     )
-    
 
 
 class AccountPaymentRegister(models.TransientModel):
@@ -19,42 +18,43 @@ class AccountPaymentRegister(models.TransientModel):
 
     # Associated fields sprint 2 requirement 3
     tariff = fields.Float(
-        string="Tariff %", 
+        string="Tariff %",
         readonly=False,
-        )
+    )
     amount_fee = fields.Float(
         string="Total Amount",
         readonly=False,
-        )
+    )
     fee = fields.Float(
         related='l10n_mx_edi_payment_method_id.tariff',
     )
     # Associated fields sprint 2 requirement 4
     amount_due = fields.Monetary(
-        currency_field='currency_id', 
-        string="Amount Due", 
-        store=True, 
+        currency_field='currency_id',
+        string="Amount Due",
+        store=True,
         readonly=False,
         compute='_compute_amount')
     cash_received = fields.Monetary(
         currency_field='currency_id',
-        string="Cash received", 
-        )
+        string="Cash received",
+    )
     change_return = fields.Monetary(
         currency_field='currency_id',
-        string="Change to return", 
+        string="Change to return",
         readonly=True,
-        )
+    )
     effective_type = fields.Boolean(
         related='l10n_mx_edi_payment_method_id.effective_type',
     )
-     
-    #Associated methods sprint 2 requirement 3 
+    is_payment_fee = fields.Boolean(store=True)
+
+    # Associated methods sprint 2 requirement 3
     @api.onchange('amount', 'l10n_mx_edi_payment_method_id')
     def _onchange_amount(self):
         self.tariff = self.amount * (self.l10n_mx_edi_payment_method_id.tariff / 100)
         self.amount_fee = self.amount + self.tariff
-        #Associated methods sprint 2 requirement 4
+        # Associated methods sprint 2 requirement 4
         self.cash_received = self.amount
 
     def _create_payment_vals_from_wizard(self):
@@ -63,8 +63,9 @@ class AccountPaymentRegister(models.TransientModel):
         payment_vals['amount_fee'] = self.amount_fee
         return payment_vals
 
-    #Associated methods sprint 2 requirement 4
-    @api.depends('source_amount', 'source_amount_currency', 'source_currency_id', 'company_id', 'currency_id', 'payment_date')
+    # Associated methods sprint 2 requirement 4
+    @api.depends('source_amount', 'source_amount_currency', 'source_currency_id', 'company_id', 'currency_id',
+                 'payment_date')
     def _compute_amount(self):
         super(AccountPaymentRegister, self)._compute_amount()
         self.amount_due = self.amount
@@ -85,6 +86,15 @@ class AccountPaymentRegister(models.TransientModel):
             if record.amount_due < record.amount:
                 raise ValidationError("The amount to be paid by the customer is greater than the amount owed")
 
+    @api.onchange('l10n_mx_edi_payment_method_id')
+    def _onchange_payment_method_m(self):
+        records = self.env.context.get('l10n_mx_edi_payment_method_id')
+        if records:
+            if records != 0:
+                self.is_payment_fee = True
+            self.l10n_mx_edi_payment_method_id = records
+
+
 class AccountPayment(models.Model):
     _inherit = "account.payment"
 
@@ -92,12 +102,12 @@ class AccountPayment(models.Model):
         string="Tariff",
         store=True,
         compute='_compute_amount'
-        )
+    )
     amount_fee = fields.Float(
         string="Total Amount",
         store=True,
-        compute='_compute_amount' 
-        )
+        compute='_compute_amount'
+    )
     fee = fields.Float(
         related='l10n_mx_edi_payment_method_id.tariff',
     )
@@ -106,13 +116,12 @@ class AccountPayment(models.Model):
     def _onchange_amount(self):
         self.tariff = self.amount * (self.l10n_mx_edi_payment_method_id.tariff / 100)
         self.amount_fee = self.amount + self.tariff
-    
-    
+
     @api.depends('amount', 'l10n_mx_edi_payment_method_id')
     def _compute_amount(self):
         self.tariff = self.amount * (self.l10n_mx_edi_payment_method_id.tariff / 100)
-        self.amount_fee = self.amount + self.tariff 
-    
+        self.amount_fee = self.amount + self.tariff
+
 
 class AccountMove(models.Model):
     _inherit = 'account.move'
@@ -146,3 +155,35 @@ class AccountMove(models.Model):
                 'ref': reconciliation_ref,
             })
         return reconciled_vals
+
+    def action_register_payment(self):
+        ''' Open the account.payment.register wizard to pay the selected journal entries.
+        :return: An action opening the account.payment.register wizard.
+        '''
+        post_order = self.env['pos.order'].search([('account_move', '=', self.id)], limit=1)
+        if post_order:
+            return {
+                'name': _('Register Payment'),
+                'res_model': 'account.payment.register',
+                'view_mode': 'form',
+                'context': {
+                    'active_model': 'account.move',
+                    'active_ids': self.ids,
+                    'l10n_mx_edi_payment_method_id': post_order.payment_ids[0].payment_method_id.fee.id,
+                },
+                'target': 'new',
+                'type': 'ir.actions.act_window'
+            }
+        else:
+            return {
+                'name': _('Register Payment'),
+                'res_model': 'account.payment.register',
+                'view_mode': 'form',
+                'context': {
+                    'active_model': 'account.move',
+                    'active_ids': self.ids,
+                    'l10n_mx_edi_payment_method_id': 0,
+                },
+                'target': 'new',
+                'type': 'ir.actions.act_window'
+            }
