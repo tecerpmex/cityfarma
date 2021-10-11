@@ -60,7 +60,7 @@ class AccountPaymentRegister(models.TransientModel):
     def _create_payment_vals_from_wizard(self):
         payment_vals = super(AccountPaymentRegister, self)._create_payment_vals_from_wizard()
         payment_vals['tariff'] = self.tariff
-        payment_vals['amount_fee'] = self.amount_fee
+        payment_vals['amount_fee'] =self.amount + self.tariff
         return payment_vals
 
     # Associated methods sprint 2 requirement 4
@@ -93,6 +93,8 @@ class AccountPaymentRegister(models.TransientModel):
             if records != 0:
                 self.is_payment_fee = True
             self.l10n_mx_edi_payment_method_id = records
+            self.tariff = self.amount * (self.l10n_mx_edi_payment_method_id.tariff / 100)
+            self.amount_fee = self.amount + self.tariff
 
 
 class AccountPayment(models.Model):
@@ -125,6 +127,10 @@ class AccountPayment(models.Model):
 
 class AccountMove(models.Model):
     _inherit = 'account.move'
+
+    extra_fee_comission = fields.Float(string='Payment commission (%)')
+    total_pay = fields.Monetary(string='TOTAL TO PAY')
+    card_payment_commission = fields.Monetary(string='Card payment commission')
 
     def _get_reconciled_info_JSON_values(self):
         self.ensure_one()
