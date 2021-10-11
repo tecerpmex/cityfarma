@@ -51,7 +51,7 @@
                     </xpath>
                 <xpath expr="//field[@name='l10n_mx_edi_payment_method_id']" position="replace">
                     <field name="l10n_mx_edi_payment_method_id"
-                           attrs="{'invisible': [('country_code', '!=', 'MX')], 'required': [('country_code', '=', 'MX')],'readonly': [('is_payment_fee', '!=', False)]}"/>
+                           attrs="{'invisible': [('country_code', '!=', 'MX')], 'required': [('country_code', '=', 'MX')]}"/>
                 </xpath>
             </field>
         </record>

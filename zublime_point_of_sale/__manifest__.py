@@ -14,7 +14,6 @@
     'data': [
         'views/inherited_pos_payment_method_views.xml',
         'views/pos_templates.xml',
-        'static/src/xml/report_invoice.xml',
     ],
     'qweb': [
         'static/src/xml/OrderReceipt.xml',

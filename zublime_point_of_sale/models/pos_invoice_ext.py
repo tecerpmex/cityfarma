@@ -29,6 +29,9 @@ class PosInvoiceReport(models.AbstractModel):
             acount_move.extra_fee_comission = post_order.payment_ids[0].payment_method_id.fee.tariff
             acount_move.card_payment_commission = acount_move.amount_total * acount_move.extra_fee_comission / 100
             acount_move.total_pay = acount_move.card_payment_commission + acount_move.amount_total
+
+            acount_move.payment_state = 'in_payment'
+
         return {
             'docs': self.env['account.move'].sudo().browse(ids_to_print),
             'qr_code_urls': self.env['report.account.report_invoice'].sudo()._get_report_values(ids_to_print)[
