@@ -129,8 +129,10 @@ class AccountMove(models.Model):
     _inherit = 'account.move'
 
     extra_fee_comission = fields.Float(string='Payment commission (%)')
-    total_pay = fields.Monetary(string='TOTAL TO PAY')
+    total_pay = fields.Monetary(string='Total charged')
     card_payment_commission = fields.Monetary(string='Card payment commission')
+    amount_due_ext = fields.Monetary(string='Amount Due')
+    is_the_pos = fields.Boolean(store=True)
 
     def _get_reconciled_info_JSON_values(self):
         self.ensure_one()
@@ -161,6 +163,7 @@ class AccountMove(models.Model):
                     'move_id': counterpart_line.move_id.id,
                     'ref': reconciliation_ref,
                 })
+                self.is_the_pos = False
         else:
             for partial, amount, counterpart_line in self._get_reconciled_invoices_partials():
                 if counterpart_line.move_id.ref:
@@ -186,9 +189,6 @@ class AccountMove(models.Model):
                     'move_id': counterpart_line.move_id.id,
                     'ref': reconciliation_ref,
                 })
-        print(self.id)
-        print(self.card_payment_commission)
-        print(self.payment_state)
         return reconciled_vals
 
     # def action_register_payment(self):

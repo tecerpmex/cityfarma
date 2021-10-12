@@ -4,28 +4,26 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 14.0+e-20210402\n"
+"Project-Id-Version: Odoo Server 14.0+e-20210228\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-01 23:21+0000\n"
-"PO-Revision-Date: 2021-10-01 19:26-0400\n"
+"POT-Creation-Date: 2021-10-12 21:09+0000\n"
+"PO-Revision-Date: 2021-10-12 21:09+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
+"Content-Transfer-Encoding: \n"
 "Plural-Forms: \n"
-"Language: es\n"
-"X-Generator: Poedit 2.3\n"
 
 #. module: zublime_account
 #: model_terms:ir.ui.view,arch_db:zublime_account.zublime_payment_extra_fee_pdf
 msgid "&amp;nbsp;&amp;nbsp;&amp;nbsp;"
-msgstr "&amp;nbsp;&amp;nbsp;&amp;nbsp;"
+msgstr ""
 
 #. module: zublime_account
 #: model_terms:ir.ui.view,arch_db:zublime_account.custom_header_zublime_payment_extra
 msgid "<b>Recibo</b>"
-msgstr "<b>Recibo</b>"
+msgstr ""
 
 #. module: zublime_account
 #: model_terms:ir.ui.view,arch_db:zublime_account.report_invoice_document_base
@@ -45,7 +43,7 @@ msgstr "<span>Importe Pagado</span>"
 #. module: zublime_account
 #: model_terms:ir.ui.view,arch_db:zublime_account.report_header_custom
 msgid "<span>Balance</span>"
-msgstr "<span>Balance</span>"
+msgstr ""
 
 #. module: zublime_account
 #: model_terms:ir.ui.view,arch_db:zublime_account.report_header_custom
@@ -66,6 +64,11 @@ msgstr "<span>Importe original</span>"
 #: model_terms:ir.ui.view,arch_db:zublime_account.report_header_custom
 msgid "<span>Reference</span>"
 msgstr "<span>Referencia</span>"
+
+#. module: zublime_account
+#: model_terms:ir.ui.view,arch_db:zublime_account.report_invoice_document_base
+msgid "<strong>Amount Due</strong>"
+msgstr "<strong>Importe adeudado</strong>"
 
 #. module: zublime_account
 #: model_terms:ir.ui.view,arch_db:zublime_account.report_header_custom
@@ -94,7 +97,7 @@ msgstr "<strong>Método de pago:</strong>"
 
 #. module: zublime_account
 #: model_terms:ir.ui.view,arch_db:zublime_account.report_header_custom
-msgid "<strong>Tarrif: </strong>"
+msgid "<strong>Tarrif:</strong>"
 msgstr "<strong>Comisión por forma de pago:</strong>"
 
 #. module: zublime_account
@@ -103,6 +106,9 @@ msgid "<strong>Vendor:</strong>"
 msgstr "<strong>Proveedor:</strong>"
 
 #. module: zublime_account
+#: model:ir.model.fields,field_description:zublime_account.field_account_bank_statement_line__amount_due_ext
+#: model:ir.model.fields,field_description:zublime_account.field_account_move__amount_due_ext
+#: model:ir.model.fields,field_description:zublime_account.field_account_payment__amount_due_ext
 #: model:ir.model.fields,field_description:zublime_account.field_account_payment_register__amount_due
 msgid "Amount Due"
 msgstr "Monto adeudado"
@@ -110,7 +116,14 @@ msgstr "Monto adeudado"
 #. module: zublime_account
 #: model_terms:ir.ui.view,arch_db:zublime_account.zublime_payment_extra_fee_pdf
 msgid "Cantidad"
-msgstr "Cantidad"
+msgstr ""
+
+#. module: zublime_account
+#: model:ir.model.fields,field_description:zublime_account.field_account_bank_statement_line__card_payment_commission
+#: model:ir.model.fields,field_description:zublime_account.field_account_move__card_payment_commission
+#: model:ir.model.fields,field_description:zublime_account.field_account_payment__card_payment_commission
+msgid "Card payment commission"
+msgstr "Comisión por forma de pago"
 
 #. module: zublime_account
 #: model:ir.model.fields,field_description:zublime_account.field_account_payment_register__cash_received
@@ -121,6 +134,11 @@ msgstr "Efectivo recibido"
 #: model:ir.model.fields,field_description:zublime_account.field_account_payment_register__change_return
 msgid "Change to return"
 msgstr "Cambio para devolver"
+
+#. module: zublime_account
+#: model_terms:ir.ui.view,arch_db:zublime_account.report_invoice_document_base
+msgid "Commission payment method ("
+msgstr "Comisión del método de pago ("
 
 #. module: zublime_account
 #: model:ir.model.fields,field_description:zublime_account.field_account_move__display_name
@@ -149,12 +167,24 @@ msgstr "Fecha del Pago:"
 #: model:ir.model.fields,field_description:zublime_account.field_l10n_mx_edi_payment_method__id
 #: model:ir.model.fields,field_description:zublime_account.field_report_zublime_account_zublime_payment_extra_fee_pdf__id
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
 #. module: zublime_account
 #: model_terms:ir.ui.view,arch_db:zublime_account.zublime_payment_extra_fee_pdf
 msgid "Importe del pago:"
-msgstr "Importe del pago:"
+msgstr ""
+
+#. module: zublime_account
+#: model:ir.model.fields,field_description:zublime_account.field_account_payment_register__is_payment_fee
+msgid "Is Payment Fee"
+msgstr ""
+
+#. module: zublime_account
+#: model:ir.model.fields,field_description:zublime_account.field_account_bank_statement_line__is_the_pos
+#: model:ir.model.fields,field_description:zublime_account.field_account_move__is_the_pos
+#: model:ir.model.fields,field_description:zublime_account.field_account_payment__is_the_pos
+msgid "Is The Pos"
+msgstr ""
 
 #. module: zublime_account
 #: model:ir.model,name:zublime_account.model_account_move
@@ -173,12 +203,17 @@ msgstr "Última modificación el"
 #. module: zublime_account
 #: model_terms:ir.ui.view,arch_db:zublime_account.zublime_payment_extra_fee_pdf
 msgid "Nombre producto:"
-msgstr "Nombre producto:"
+msgstr ""
 
 #. module: zublime_account
 #: model_terms:ir.ui.view,arch_db:zublime_account.zublime_payment_extra_fee_pdf
 msgid "Número de Factura:&amp;nbsp;"
-msgstr "Número de Factura:&amp;nbsp;"
+msgstr ""
+
+#. module: zublime_account
+#: model_terms:ir.ui.view,arch_db:zublime_account.report_invoice_document_base
+msgid "Paid on"
+msgstr "Pagado en"
 
 #. module: zublime_account
 #: model:ir.model,name:zublime_account.model_l10n_mx_edi_payment_method
@@ -191,6 +226,13 @@ msgid "Payment Receipt:"
 msgstr "Comprobante de pago:"
 
 #. module: zublime_account
+#: model:ir.model.fields,field_description:zublime_account.field_account_bank_statement_line__extra_fee_comission
+#: model:ir.model.fields,field_description:zublime_account.field_account_move__extra_fee_comission
+#: model:ir.model.fields,field_description:zublime_account.field_account_payment__extra_fee_comission
+msgid "Payment commission (%)"
+msgstr ""
+
+#. module: zublime_account
 #: model:ir.model,name:zublime_account.model_account_payment
 msgid "Payments"
 msgstr "Pagos"
@@ -198,7 +240,7 @@ msgstr "Pagos"
 #. module: zublime_account
 #: model_terms:ir.ui.view,arch_db:zublime_account.zublime_payment_extra_fee_pdf
 msgid "Precio"
-msgstr "Precio"
+msgstr ""
 
 #. module: zublime_account
 #: model_terms:ir.ui.view,arch_db:zublime_account.zublime_payment_extra_fee_pdf
@@ -249,7 +291,19 @@ msgstr "Total a cobrar (incluye comisión por forma de pago)"
 #. module: zublime_account
 #: model_terms:ir.ui.view,arch_db:zublime_account.zublime_payment_extra_fee_pdf
 msgid "Total Factura: &amp;nbsp;"
-msgstr "Total Factura: &amp;nbsp;"
+msgstr ""
+
+#. module: zublime_account
+#: model:ir.model.fields,field_description:zublime_account.field_account_bank_statement_line__total_pay
+#: model:ir.model.fields,field_description:zublime_account.field_account_move__total_pay
+#: model:ir.model.fields,field_description:zublime_account.field_account_payment__total_pay
+msgid "Total charged"
+msgstr "Total cobrado"
+
+#. module: zublime_account
+#: model_terms:ir.ui.view,arch_db:zublime_account.report_invoice_document_base
+msgid "Total charged ="
+msgstr "Total cobrado ="
 
 #. module: zublime_account
 #: model_terms:ir.ui.view,arch_db:zublime_account.zublime_payment_extra_fee_pdf
