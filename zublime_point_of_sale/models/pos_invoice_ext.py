@@ -25,15 +25,10 @@ class PosInvoiceReport(models.AbstractModel):
             raise UserError(_('No link to an invoice for %s.') % ', '.join(not_invoiced_orders_names))
         for id_to_print in ids_to_print:
             acount_move = self.env['account.move'].search([('id', '=', id_to_print)], limit=1)
-            post_order = self.env['pos.order'].search([('id', '=', invoiced_posorders_ids[0])], limit=1)
-            acount_move.extra_fee_comission = post_order.payment_ids[0].payment_method_id.fee.tariff
-            acount_move.card_payment_commission = acount_move.amount_total * acount_move.extra_fee_comission / 100
-            acount_move.total_pay = acount_move.card_payment_commission + acount_move.amount_total
-            acount_move.is_the_pos = True
-
             acount_move.payment_state = 'in_payment'
+            acount_move.amount_residual = 0
         return {
             'docs': self.env['account.move'].sudo().browse(ids_to_print),
-            'qr_code_urls': self.env['report.account.report_invoice_with_payments'].sudo()._get_report_values(ids_to_print)[
+            'qr_code_urls': self.env['report.account.report_invoice'].sudo()._get_report_values(ids_to_print)[
                 'qr_code_urls']
         }

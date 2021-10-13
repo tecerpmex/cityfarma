@@ -60,7 +60,7 @@ class AccountPaymentRegister(models.TransientModel):
     def _create_payment_vals_from_wizard(self):
         payment_vals = super(AccountPaymentRegister, self)._create_payment_vals_from_wizard()
         payment_vals['tariff'] = self.tariff
-        payment_vals['amount_fee'] =self.amount + self.tariff
+        payment_vals['amount_fee'] = self.amount + self.tariff
         return payment_vals
 
     # Associated methods sprint 2 requirement 4
@@ -128,42 +128,35 @@ class AccountPayment(models.Model):
 class AccountMove(models.Model):
     _inherit = 'account.move'
 
-    extra_fee_comission = fields.Float(string='Payment commission (%)')
-    total_pay = fields.Monetary(string='Total charged')
-    card_payment_commission = fields.Monetary(string='Card payment commission')
-    amount_due_ext = fields.Monetary(string='Amount Due')
-    is_the_pos = fields.Boolean(store=True)
-
     def _get_reconciled_info_JSON_values(self):
         self.ensure_one()
         reconciled_vals = []
-        pos_order=self.env['pos.order'].search([('account_move', '=', self.id)], limit=1)
+        pos_order = self.env['pos.order'].search([('account_move', '=', self.id)], limit=1)
         if pos_order:
-            for partial, amount, counterpart_line in self._get_reconciled_invoices_partials():
-                if counterpart_line.move_id.ref:
-                    reconciliation_ref = '%s (%s)' % (counterpart_line.move_id.name, counterpart_line.move_id.ref)
-                else:
-                    reconciliation_ref = counterpart_line.move_id.name
+            pos_payment = self.env['pos.payment'].search([('pos_order_id', '=', pos_order.id)])
 
+            for pos_pay in pos_payment:
+                tariff = pos_pay.payment_method_id.extra_fee * pos_pay.amount / 100
+                amount_fee = tariff + pos_pay.amount
                 reconciled_vals.append({
-                    'name': counterpart_line.name,
-                    'journal_name': counterpart_line.journal_id.name,
-                    'amount': self.total_pay,
+                    'name': self.name,
+                    'journal_name': self.journal_id.name,
+                    'amount': pos_pay.amount,
                     'currency': self.currency_id.symbol,
                     'digits': [69, self.currency_id.decimal_places],
                     'position': self.currency_id.position,
-                    'date': counterpart_line.date,
-                    'fee': self.extra_fee_comission,
-                    'tariff': self.card_payment_commission,
-                    'amount_fee':self.total_pay,
-                    'payment_id': counterpart_line.id,
-                    'partial_id': partial.id,
-                    'account_payment_id': counterpart_line.payment_id.id,
-                    'payment_method_name': counterpart_line.payment_id.payment_method_id.name if counterpart_line.journal_id.type == 'bank' else None,
-                    'move_id': counterpart_line.move_id.id,
-                    'ref': reconciliation_ref,
+                    'date': self.invoice_date,
+                    'fee': pos_pay.payment_method_id.extra_fee,
+                    'tariff': tariff,
+                    'amount_fee': amount_fee,
+                    'payment_id': self.payment_id,
+                    # 'partial_id': partial.id,
+                    # 'account_payment_id': counterpart_line.payment_id.id,
+                    # 'payment_method_name': counterpart_line.payment_id.payment_method_id.name if counterpart_line.journal_id.type == 'bank' else None,
+                    'move_id': self.id,
+                    'ref': pos_order.name,
                 })
-                self.is_the_pos = False
+            # self.is_the_pos = False
         else:
             for partial, amount, counterpart_line in self._get_reconciled_invoices_partials():
                 if counterpart_line.move_id.ref:
@@ -190,35 +183,3 @@ class AccountMove(models.Model):
                     'ref': reconciliation_ref,
                 })
         return reconciled_vals
-
-    # def action_register_payment(self):
-    #     ''' Open the account.payment.register wizard to pay the selected journal entries.
-    #     :return: An action opening the account.payment.register wizard.
-    #     '''
-    #     post_order = self.env['pos.order'].search([('account_move', '=', self.id)], limit=1)
-    #     if post_order:
-    #         return {
-    #             'name': _('Register Payment'),
-    #             'res_model': 'account.payment.register',
-    #             'view_mode': 'form',
-    #             'context': {
-    #                 'active_model': 'account.move',
-    #                 'active_ids': self.ids,
-    #                 'l10n_mx_edi_payment_method_id': post_order.payment_ids[0].payment_method_id.fee.id,
-    #             },
-    #             'target': 'new',
-    #             'type': 'ir.actions.act_window'
-    #         }
-    #     else:
-    #         return {
-    #             'name': _('Register Payment'),
-    #             'res_model': 'account.payment.register',
-    #             'view_mode': 'form',
-    #             'context': {
-    #                 'active_model': 'account.move',
-    #                 'active_ids': self.ids,
-    #                 'l10n_mx_edi_payment_method_id': 0,
-    #             },
-    #             'target': 'new',
-    #             'type': 'ir.actions.act_window'
-    #         }
