@@ -20,32 +20,39 @@
             <field name="arch" type="xml">
                 <label for="amount" position="before">
                     <label for="amount_due"
-                            attrs="{'invisible': ['|', ('can_edit_wizard', '=', False), '&amp;', ('can_group_payments', '=', True), ('group_payment', '=', False)]}"/>
+                           attrs="{'invisible': ['|', ('can_edit_wizard', '=', False), '&amp;', ('can_group_payments', '=', True), ('group_payment', '=', False)]}"/>
                     <div name="amount_div0" class="o_row"
-                            attrs="{'invisible': ['|', ('can_edit_wizard', '=', False), '&amp;', ('can_group_payments', '=', True), ('group_payment', '=', False)]}">
+                         attrs="{'invisible': ['|', ('can_edit_wizard', '=', False), '&amp;', ('can_group_payments', '=', True), ('group_payment', '=', False)]}">
                         <field name="amount_due" readonly="1" force_save="1"/>
                         <field name="currency_id"
-                                options="{'no_create': True, 'no_open': True}"
-                                groups="base.group_multi_currency"/>
+                               options="{'no_create': True, 'no_open': True}"
+                               groups="base.group_multi_currency"/>
                     </div>
                 </label>
                 <field name="payment_date" position="before">
                     <field name="fee" invisible="1"/>
                     <field name="effective_type" invisible="1"/>
                     <label for="tariff"
-                            attrs="{'invisible': [('fee', '=', 0)]}"/>
+                           attrs="{'invisible': [('fee', '=', 0)]}"/>
                     <div name="amount_div1" class="o_row"
-                            attrs="{'invisible': [('fee', '=', 0)]}">
+                         attrs="{'invisible': [('fee', '=', 0)]}">
                         %<field name="fee"/>=
                         <field name="tariff" readonly="1" force_save="1"/>
                         <field name="currency_id"
-                                options="{'no_create': True, 'no_open': True}"
-                                groups="base.group_multi_currency"/>
+                               options="{'no_create': True, 'no_open': True}"
+                               groups="base.group_multi_currency"/>
                     </div>
                     <field name="amount_fee" attrs="{'invisible': [('fee', '=', 0)]}" readonly="1" foce_save="1"/>
                     <field name="cash_received" attrs="{'invisible': [('effective_type', '=', False)]}"/>
                     <field name="change_return" attrs="{'invisible': [('effective_type', '=', False)]}"/>
                 </field>
+                 <xpath expr="//field[@name='journal_id']" position="after">
+                        <field name="is_payment_fee" invisible="1"/>
+                    </xpath>
+                <xpath expr="//field[@name='l10n_mx_edi_payment_method_id']" position="replace">
+                    <field name="l10n_mx_edi_payment_method_id"
+                           attrs="{'invisible': [('country_code', '!=', 'MX')], 'required': [('country_code', '=', 'MX')]}"/>
+                </xpath>
             </field>
         </record>
 
@@ -56,8 +63,10 @@
             <field name="arch" type="xml">
                 <field name="date" position="before">
                     <field name="fee" invisible="1"/>
-                    <field name="tariff" string="Tariff" widget="monetary" options="{'currency_field':'currency_id'}" attrs="{'invisible': [('fee', '=', 0)]}"/>
-                    <field name="amount_fee" string="Total Amount" widget="monetary" options="{'currency_field':'currency_id'}" attrs="{'invisible': [('fee', '=', 0)]}"/>
+                    <field name="tariff" string="Tariff" widget="monetary" options="{'currency_field':'currency_id'}"
+                           attrs="{'invisible': [('fee', '=', 0)]}"/>
+                    <field name="amount_fee" string="Total Amount" widget="monetary"
+                           options="{'currency_field':'currency_id'}" attrs="{'invisible': [('fee', '=', 0)]}"/>
                 </field>
             </field>
         </record>
@@ -106,9 +115,9 @@
                                 </div>
                                 <div class="col-6">
                                     <h6>
-                                        <strong>Tarrif: </strong>
-                                            <span t-field="o.tariff"
-                                                  t-options="{'widget': 'monetary'}"/>
+                                        <strong>Tarrif:</strong>
+                                        <span t-field="o.tariff"
+                                              t-options="{'widget': 'monetary'}"/>
 
                                     </h6>
                                 </div>

@@ -2,7 +2,7 @@
 <odoo>
     <data>
         <template id="report_invoice_document_base" inherit_id="account.report_invoice_document">
-            <xpath expr="//i" position="after">
+             <xpath expr="//i" position="after">
                 <t t-if="payment_vals['fee'] != 0">
                     <i class="oe_form_field text-right oe_payment_label"><br/>Commission payment method (<t t-esc="payment_vals['fee']"/> %) = <t t-esc="payment_vals['tariff']" t-options='{"widget": "monetary", "display_currency": o.currency_id}'/></i>
                     <i class="oe_form_field text-right oe_payment_label"><br/>Total charged = <t t-esc="payment_vals['amount_fee']" t-options='{"widget": "monetary", "display_currency": o.currency_id}'/></i>

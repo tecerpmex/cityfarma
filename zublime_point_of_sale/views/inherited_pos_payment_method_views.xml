@@ -12,6 +12,9 @@
                 <xpath expr="//field[@name='company_id']" position="after">
                     <field name="extra_fee" />
                 </xpath>
+                <xpath expr="//field[@name='company_id']" position="after">
+                    <field name="fee" string="Forma de pago"/>
+                </xpath>
 
             </field>
         </record>
