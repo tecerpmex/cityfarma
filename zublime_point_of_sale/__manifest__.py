@@ -17,7 +17,7 @@
     ],
     'qweb': [
         'static/src/xml/OrderReceipt.xml',
-        'static/src/xml/PaymentScreenPaymentLines.xml',
+        'static/src/xml/PaymentScreenPaymentLines.xml'
     ],
     'demo': [],
 }
