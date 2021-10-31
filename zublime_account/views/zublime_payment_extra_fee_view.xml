@@ -63,8 +63,13 @@
             <field name="arch" type="xml">
                 <field name="date" position="before">
                     <field name="fee" invisible="1"/>
-                    <field name="tariff" string="Tariff" widget="monetary" options="{'currency_field':'currency_id'}"
+                    <label for="tariff"
                            attrs="{'invisible': [('fee', '=', 0)]}"/>
+                    <div name="amount_div1" class="o_row"
+                         attrs="{'invisible': [('fee', '=', 0)]}">
+                        <field name="fee"/> % =
+                        <field name="tariff" readonly="1" force_save="1"/>
+                    </div>
                     <field name="amount_fee" string="Total Amount" widget="monetary"
                            options="{'currency_field':'currency_id'}" attrs="{'invisible': [('fee', '=', 0)]}"/>
                 </field>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<templates id="template" xml:space="preserve">
+    <t t-name="ShowPaymentInfo" t-inherit="account.ShowPaymentInfo" t-inherit-mode="extension" owl="1">
+        <xpath expr="//div/table/t/tr/t[2]/td[2]/i" position="replace">
+            <i class="o_field_widget text-right o_payment_label">Paid on <t t-esc="line.date"></t></i>
+            <t t-if="line.fee != 0">
+                <i class="o_field_widget text-right o_payment_label">Commission payment method (<t t-esc="line.fee"/> %) = <t t-esc="line.tariff"/></i>
+                <i class="o_field_widget text-right o_payment_label">Total charged = <t t-esc="line.amount_fee"/></i>
+            </t>
+        </xpath>
+    </t>
+</templates>
