@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+           <report id="report_detailed_quotation_order"
+                string="Quotation / Order Detailed"
+                model="sale.order"
+                report_type="qweb-pdf"
+                file="zublime_sale_report.report_detailed_quotation_order_template"
+                name="zublime_sale_report.report_detailed_quotation_order_template"
+                menu="True" />
+    </data>
+</odoo>
