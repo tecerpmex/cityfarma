@@ -1,0 +1,11 @@
+<odoo>
+    <data>
+           <template id="search_panel_extension_assets_backend" name="add_multi_item assets" inherit_id="web.assets_backend">
+		        <xpath expr="." position="inside">	     
+		           
+			        <script type="text/javascript" src="/add_multi_item/static/src/js/add_multi_item.js"></script>
+		            
+		        </xpath>
+   		</template>
+    </data>
+</odoo>

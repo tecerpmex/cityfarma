@@ -10,9 +10,7 @@
             <field name="arch" type="xml">
                 <xpath expr="//field[@name='fixed_price']" position="after">
                     <field name="cost" attrs="{'invisible':[('compute_price', '!=', 'fixed')]}"/>
-<!--                    <field name="cost" attrs="{'invisible':[('compute_price', '!=', 'fixed')]}"/>-->
                 </xpath>
-
             </field>
         </record>
 
@@ -22,9 +20,14 @@
             <field name="inherit_id" ref="product.product_pricelist_item_tree_view_from_product"/>
             <field name="priority" eval="8"/>
             <field name="arch" type="xml">
+                <xpath expr="//field[@name='product_id']" position="after">
+                    <field name="cost" string="Cost" readonly="True" force_save="1"/>
+                    <field name="list_price" string="Sales Price" readonly="True" force_save="1"/>
+                </xpath>
                 <xpath expr="//field[@name='fixed_price']" position="after">
-                    <field name="cost"/>
-                    <field name="utilidad"/>
+                    <field name="utilidad" string="Margin in %" readonly="True" force_save="1"/>
+                    <field name="margin" string="Margin" readonly="True" force_save="1"/>
+                    <field name="taxes_ids" widget="many2many_tags" string="Taxes" readonly="True" force_save="1"/>
                 </xpath>
 
             </field>
@@ -36,9 +39,14 @@
             <field name="inherit_id" ref="product.product_pricelist_item_tree_view"/>
             <field name="priority" eval="8"/>
             <field name="arch" type="xml">
-                <xpath expr="//field[@name='price']" position="after">
-                    <field name="cost"/>
-                    <field name="utilidad"/>
+                <xpath expr="//field[@name='name']" position="after">
+                    <field name="cost" string="Cost" readonly="True" force_save="1"/>
+                    <field name="list_price" string="Sales Price" readonly="True" force_save="1"/>
+                </xpath>
+                <xpath expr="//field[@name='min_quantity']" position="after">
+                    <field name="utilidad" string="Margin in %" readonly="True" force_save="1"/>
+                    <field name="margin" string="Margin" readonly="True" force_save="1"/>
+                    <field name="taxes_ids" widget="many2many_tags" string="Taxes" readonly="True" force_save="1"/>
                 </xpath>
             </field>
         </record>
@@ -49,9 +57,14 @@
             <field name="inherit_id" ref="product.product_pricelist_view"/>
             <field name="priority" eval="8"/>
             <field name="arch" type="xml">
-                <xpath expr="//notebook/page/field/tree/field[@name='fixed_price']" position="after">
-                    <field name="cost" string="Costo" readonly="True" force_save="1"/>
-                    <field name="utilidad" force_save="1"/>
+                <xpath expr="//field[@name='item_ids']/tree/field[@name='product_id']" position="after">
+                    <field name="cost" string="Cost" readonly="True" force_save="1"/>
+                    <field name="list_price" string="Sales Price" readonly="True" force_save="1"/>
+                </xpath>
+                <xpath expr="//field[@name='item_ids']/tree/field[@name='fixed_price']" position="after">
+                    <field name="utilidad" string="Margin in %" readonly="True" force_save="1"/>
+                    <field name="margin" string="Margin" readonly="True" force_save="1"/>
+                    <field name="taxes_ids" widget="many2many_tags" string="Taxes" readonly="True" force_save="1"/>
                 </xpath>
 
             </field>
@@ -61,17 +74,20 @@
             <field name="name">product.pricelist.inherit.form</field>
             <field name="model">product.pricelist</field>
             <field name="inherit_id" ref="product.product_pricelist_view_inherit"/>
-            <field name="priority" eval="8"/>
+            <field name="priority" eval="18"/>
             <field name="arch" type="xml">
                 <xpath expr="//tree" position="attributes">
                     <attribute name="default_order">name desc</attribute>
                 </xpath>
-                <xpath expr="//notebook/page/field/tree/field[@name='price']" position="after">
-                    <field name="cost" string="Costo" readonly="True" force_save="1"/>
-                    <field name="utilidad" force_save="1"/>
+                <xpath expr="//field[@name='item_ids']/tree/field[@name='name']" position="after">
+                    <field name="cost" string="Cost" readonly="True" force_save="1"/>
+                    <field name="list_price" string="Sales Price" readonly="True" force_save="1"/>
                 </xpath>
-
-
+                <xpath expr="//field[@name='item_ids']/tree/field[@name='price']" position="after">
+                    <field name="utilidad" string="Margin in %" readonly="True" force_save="1"/>
+                    <field name="margin" string="Margin" readonly="True" force_save="1"/>
+                    <field name="taxes_ids" widget="many2many_tags" string="Taxes" readonly="True" force_save="1"/>
+                </xpath>
             </field>
         </record>
     </data>
