@@ -70,7 +70,7 @@ class AccountPaymentRegister(models.TransientModel):
         super(AccountPaymentRegister, self)._compute_amount()
         self.amount_due = self.amount
 
-    @api.onchange('cash_received')
+    @api.onchange('cash_received', 'amount')
     def _onchange_cash_received(self):
         self.change_return = self.cash_received - self.amount
 
