@@ -6,7 +6,7 @@ class AccountMove(models.Model):
     _inherit = 'account.move.line'
 
     maximum_price = fields.Float(string='Maximum retail price', digits='Maximum retail price')
-    discount_one = fields.Float(string='Discount1 (%)', digits='Discount', default=0.0)
+    discount_one = fields.Float(string='Reduction (%)', digits='Discount', default=0.0)
 
     @api.onchange('product_id')
     def _onchange_product_id(self):
@@ -29,8 +29,11 @@ class AccountMove(models.Model):
     @api.onchange('maximum_price', 'price_unit')
     def _onchange_discount_one(self):
         for account in self:
-            if account.maximum_price and account.price_unit:
+            if account.maximum_price > 0 and account.price_unit > 0:
                 discount1 = account.maximum_price - account.price_unit
                 account.discount_one = discount1/account.maximum_price*100
+            else:
+                account.discount_one = 0.0
+
 
 
