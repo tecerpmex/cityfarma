@@ -30,6 +30,10 @@ class ProductPriceListItem(models.Model):
     taxes_ids = fields.Many2many(
         related='product_tmpl_id.taxes_id'
         )
+    barcode = fields.Char(
+        related='product_id.barcode',
+        store=True,  
+        )
     
     @api.onchange('product_tmpl_id')
     def onchange_product_item(self):
