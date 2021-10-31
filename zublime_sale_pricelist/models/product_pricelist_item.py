@@ -47,13 +47,13 @@ class ProductPriceListItem(models.Model):
                 pro.list_price = pro.product_tmpl_id.list_price
                 pro.margin = pro.fixed_price - pro.cost
                 if pro.cost > 0:
-                    pro.utilidad = pro.fixed_price / pro.cost * 100
+                    pro.utilidad = pro.margin / pro.cost
             if pro.product_id:
                 pro.cost = pro.product_id.standard_price
                 pro.list_price = pro.product_id.product_tmpl_id.list_price
                 pro.margin = pro.fixed_price - pro.cost
                 if pro.cost > 0:
-                    pro.utilidad = pro.fixed_price / pro.cost * 100
+                    pro.utilidad = pro.margin / pro.cost
 
     @api.depends('fixed_price', 'product_tmpl_id', 'product_id')
     def _compute_price_item(self):
@@ -63,10 +63,10 @@ class ProductPriceListItem(models.Model):
                 pro.list_price = pro.product_tmpl_id.list_price
                 pro.margin = pro.fixed_price - pro.cost
                 if pro.cost > 0:
-                    pro.utilidad = pro.fixed_price / pro.cost * 100
+                    pro.utilidad = pro.margin / pro.cost
             if pro.product_id:
                 pro.cost = pro.product_id.standard_price
                 pro.list_price = pro.product_id.product_tmpl_id.list_price
                 pro.margin = pro.fixed_price - pro.cost
                 if pro.cost > 0:
-                    pro.utilidad = pro.fixed_price / pro.cost * 100
+                    pro.utilidad = pro.margin / pro.cost
