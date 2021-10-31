@@ -8,6 +8,8 @@
     'author': 'Easi Coders',
     'depends': ['sale_management', 'account'],
     'data': [
+            "security/security_product.xml",
+            "views/res_config_settings.xml",
             "views/product.xml",
             "views/sale_order.xml",
             "views/account_move.xml",

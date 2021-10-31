@@ -9,10 +9,12 @@
                 <field name="maximum_price" optional="show"/>
            </xpath>
             <xpath expr="//page/field[@name='order_line']/tree/field[@name='price_unit']" position="after">
-                <field name="discount_one" optional="show"/>
+                <field name="discount_one" optional="show" groups="zublime_sale.group_discount_price_max"/>
+                <field name="discount_subtotal" optional="show"  groups="zublime_sale.group_discount_subtotal"/>
            </xpath>
             <xpath expr="//field[@name='analytic_account_id']" position='after'>
-                <field name="is_paid"/>       
+                <field name="is_paid"/>
+                <field name="paid"/>
              </xpath>
         </field>
     </record>

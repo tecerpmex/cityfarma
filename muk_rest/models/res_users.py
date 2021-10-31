@@ -27,12 +27,12 @@ class ResUsers(models.Model):
     # Framework
     #----------------------------------------------------------
     
-    def __init__(self, pool, cr):
-        init_result = super(ResUsers, self).__init__(pool, cr)
-        oauth_fields = ['oauth1_sessions', 'oauth2_sessions']
-        type(self).SELF_READABLE_FIELDS = list(self.SELF_READABLE_FIELDS)
-        type(self).SELF_READABLE_FIELDS.extend(oauth_fields)
-        return init_result
+    # def __init__(self, pool, cr):
+    #     init_result = super(ResUsers, self).__init__(pool, cr)
+    #     oauth_fields = ['oauth1_sessions', 'oauth2_sessions']
+    #     type(self).SELF_READABLE_FIELDS = list(self.SELF_READABLE_FIELDS)
+    #     type(self).SELF_READABLE_FIELDS.extend(oauth_fields)
+    #     return init_result
 
     #----------------------------------------------------------
     # Read
