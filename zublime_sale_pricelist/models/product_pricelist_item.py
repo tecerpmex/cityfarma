@@ -7,23 +7,23 @@ class ProductPriceListItem(models.Model):
     cost = fields.Float(
         string='Precio Costo',
         store=True, 
-        compute='_compute_price'
+        compute='_compute_price_item'
         )
     utilidad = fields.Float(
         string='Utilidad', 
         store=True, 
-        compute='_compute_price'
+        compute='_compute_price_item'
         )
     margin = fields.Float(
         string='Margin',
         store=True, 
-        compute='_compute_price'
+        compute='_compute_price_item'
         )
     list_price = fields.Float(
         'Sales Price', 
         default=0,
         digits='Product Price',
-        compute='_compute_price',     
+        compute='_compute_price_item',     
         store=True,  
         help="Price at which the product is sold to customers."
         )
@@ -32,7 +32,7 @@ class ProductPriceListItem(models.Model):
         )
     
     @api.onchange('product_tmpl_id')
-    def onchange_product(self):
+    def onchange_product_item(self):
         for pro in self:
             pro.cost = 0
             pro.list_price = 0
@@ -52,7 +52,7 @@ class ProductPriceListItem(models.Model):
                     pro.utilidad = pro.fixed_price / pro.cost * 100
 
     @api.depends('fixed_price', 'product_tmpl_id', 'product_id')
-    def _compute_price(self):
+    def _compute_price_item(self):
         for pro in self:
             if pro.product_tmpl_id:
                 pro.cost = pro.product_tmpl_id.standard_price
