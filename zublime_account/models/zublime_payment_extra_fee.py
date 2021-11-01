@@ -70,7 +70,7 @@ class AccountPaymentRegister(models.TransientModel):
         super(AccountPaymentRegister, self)._compute_amount()
         self.amount_due = self.amount
 
-    @api.onchange('cash_received')
+    @api.onchange('cash_received', 'amount')
     def _onchange_cash_received(self):
         self.change_return = self.cash_received - self.amount
 
@@ -78,13 +78,13 @@ class AccountPaymentRegister(models.TransientModel):
     def _check_cash_received(self):
         for record in self:
             if record.cash_received < record.amount:
-                raise ValidationError("The cash delivered by the customer is less than the amount")
+                raise ValidationError(_("The cash delivered by the customer is less than the amount"))
 
     @api.constrains('amount_due', 'amount')
     def _check_amount(self):
         for record in self:
             if record.amount_due < record.amount:
-                raise ValidationError("The amount to be paid by the customer is greater than the amount owed")
+                raise ValidationError(_("The amount to be paid by the customer is greater than the amount owed"))
 
     # @api.onchange('l10n_mx_edi_payment_method_id')
     # def _onchange_payment_method_m(self):
