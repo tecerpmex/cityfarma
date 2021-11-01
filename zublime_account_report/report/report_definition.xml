@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+           <report id="report_detailed_invoice"
+                string="Detailed invoices"
+                model="account.move"
+                report_type="qweb-pdf"
+                file="zublime_account_report.report_detailed_invoice_template"
+                name="zublime_account_report.report_detailed_invoice_template"
+                menu="True" />
+
+        <record id="paper_format_detailed_invoice" model="report.paperformat">
+            <field name="name">Report Detailed Invoice</field>
+            <field name="default" eval="True" />
+            <field name="format">custom</field>
+            <field name="page_height">0</field>
+            <field name="page_width">0</field>
+            <field name="orientation">Portrait</field>
+            <field name="margin_top">8</field>
+            <field name="margin_bottom">10</field>
+            <field name="margin_left">5</field>
+            <field name="margin_right">5</field>
+            <field name="header_line" eval="False" />
+            <field name="header_spacing">0</field>
+            <field name="dpi">90</field>
+            <field name="report_ids" eval="[(6, 0, [ref('zublime_account_report.report_detailed_invoice')])]"/>
+        </record>
+
+        <record id="account_invoices_without_payment_detail" model="ir.actions.report">
+            <field name="name">Invoices without Payment Detailed</field>
+            <field name="model">account.move</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">zublime_account_report.report_detailed_invoice_template</field>
+            <field name="report_file">zublime_account_report.report_detailed_invoice_template</field>
+            <field name="print_report_name">(object._get_report_base_filename())</field>
+            <field name="attachment">(object.state == 'posted') and ((object.name or 'INV').replace('/','_')+'.pdf')</field>
+            <field name="binding_model_id" ref="account.model_account_move"/>
+            <field name="binding_type">report</field>
+        </record>
+
+
+    </data>
+</odoo>

@@ -25,9 +25,27 @@ class SaleOrder(models.Model):
         req = requests.request(method='POST', url=url, data=data, headers=headers)
         req.json()
 
+    def connection_postman_cancel(self, id):
+        company = self.env['res.company'].sudo().search([('zublime', '=', True),
+                                                        ('id', '=', self.env.user.company_id.id)], limit=1)
+        service = '/dispatch-order/notify-order-action'
+        url = company.url_zublime + service
+        data = {
+            'id': id,
+            'state': 'cancel'
+        }
+        headers = {"Content-type": "application/x-www-form-urlencoded"}
+        req = requests.request(method='POST', url=url, data=data, headers=headers)
+        req.json()
+
     def action_confirm(self):
         result = super(SaleOrder, self).action_confirm()
         self.connection_postman(self.id)
+        return result
+
+    def action_cancel(self):
+        result = super(SaleOrder, self).action_cancel()
+        self.connection_postman_cancel(self.id)
         return result
 
     @api.depends('order_line.product_uom_qty', 'order_line.qty_invoiced', 'invoice_ids.state')

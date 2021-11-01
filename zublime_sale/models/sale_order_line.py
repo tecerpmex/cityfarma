@@ -20,16 +20,20 @@ class SaleOrderLine(models.Model):
     @api.onchange('maximum_price', 'price_unit')
     def _onchange_discount_one(self):
         for line in self:
-            if line.maximum_price and line.price_unit:
+            if line.maximum_price > 0 and line.price_unit > 0:
                 discount1 = line.maximum_price - line.price_unit
                 line.discount_one = discount1/line.maximum_price*100
+            else:
+                line.discount_one = 0.0
 
     @api.onchange('maximum_price', 'price_unit', 'product_uom_qty', 'discount')
     def _onchange_discount_subtotal(self):
         for line in self:
-            if line.price_subtotal and line.maximum_price:
+            if line.price_subtotal > 0 and line.maximum_price > 0:
                 discount1 = line.maximum_price * line.product_uom_qty
                 line.discount_subtotal = (discount1 - line.price_subtotal)/discount1 * 100
+            else:
+                line.discount_subtotal = 0.0
 
     def _prepare_invoice_line(self, **optional_values):
         res = super(SaleOrderLine, self)._prepare_invoice_line(**optional_values)

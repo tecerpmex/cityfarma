@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 14.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-09-09 15:50+0000\n"
-"PO-Revision-Date: 2021-09-09 15:50+0000\n"
+"POT-Creation-Date: 2021-10-31 18:31+0000\n"
+"PO-Revision-Date: 2021-10-31 18:31+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -18,12 +18,16 @@ msgstr ""
 #. module: zublime_sale
 #: model_terms:ir.ui.view,arch_db:zublime_sale.res_config_settings_view_desc_form
 msgid "Calculate discount by price max"
-msgstr "Calcular el porcentaje de reducción tomando como base el precio máximo de venta al público sin sumar otros descuentos"
+msgstr ""
+"Calcular el porcentaje de reducción tomando como base el precio máximo de "
+"venta al público sin sumar otros descuentos"
 
 #. module: zublime_sale
 #: model_terms:ir.ui.view,arch_db:zublime_sale.res_config_settings_view_desc_form
 msgid "Calculate discount by subtotal"
-msgstr "Calcular el porcentaje de reducción tomando como base el precio máximo de venta al público y el subtotal (agregando otros descuentos)"
+msgstr ""
+"Calcular el porcentaje de reducción tomando como base el precio máximo de "
+"venta al público y el subtotal (agregando otros descuentos)"
 
 #. module: zublime_sale
 #: model:ir.model,name:zublime_sale.model_res_company
@@ -36,34 +40,30 @@ msgid "Config Settings"
 msgstr "Opciones de configuración"
 
 #. module: zublime_sale
-#: model_terms:ir.ui.view,arch_db:zublime_sale.view_account_move_form_inherit
-msgid "Disc1.%"
-msgstr "Desc1.%"
-
-#. module: zublime_sale
 #: model:res.groups,name:zublime_sale.group_discount_price_max
 msgid "Discount by price max"
-msgstr "Reducción (%) por precio máximo de venta al público sin considerar el subtotal (otros descuentos)"
+msgstr ""
+"Reducción (%) por precio máximo de venta al público sin considerar el "
+"subtotal (otros descuentos)"
 
 #. module: zublime_sale
 #: model:res.groups,name:zublime_sale.group_discount_subtotal
 msgid "Discount by subtotal"
-msgstr "Reducción (%) por precio de venta máximo al público y subtotal del producto"
-
-#. module: zublime_sale
-#: model:ir.model.fields,field_description:zublime_sale.field_account_move_line__discount_one
-msgid "Discount1 (%)"
-msgstr "Desc1.%"
+msgstr ""
+"Reducción (%) por precio de venta máximo al público y subtotal del producto"
 
 #. module: zublime_sale
 #: model:ir.model.fields,field_description:zublime_sale.field_res_config_settings__group_discount_subtotal
 msgid "Discounts by subtotal"
-msgstr "Reducción (%) por precio de venta máximo al público y subtotal del producto"
+msgstr ""
+"Reducción (%) por precio de venta máximo al público y subtotal del producto"
 
 #. module: zublime_sale
 #: model:ir.model.fields,field_description:zublime_sale.field_res_config_settings__group_discount_price_max
 msgid "Discounts price max"
-msgstr "Reducción (%) por precio máximo de venta al público sin considerar el subtotal (otros descuentos)"
+msgstr ""
+"Reducción (%) por precio máximo de venta al público sin considerar el "
+"subtotal (otros descuentos)"
 
 #. module: zublime_sale
 #: model:ir.model.fields,field_description:zublime_sale.field_account_move_line__display_name
@@ -136,8 +136,10 @@ msgid "Prueba"
 msgstr ""
 
 #. module: zublime_sale
+#: model:ir.model.fields,field_description:zublime_sale.field_account_move_line__discount_one
 #: model:ir.model.fields,field_description:zublime_sale.field_sale_order_line__discount_one
 #: model:ir.model.fields,field_description:zublime_sale.field_sale_order_line__discount_subtotal
+#: model_terms:ir.ui.view,arch_db:zublime_sale.view_account_move_form_inherit
 msgid "Reduction (%)"
 msgstr "Reducción (%)"
 
