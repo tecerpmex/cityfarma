@@ -2,6 +2,7 @@
 
 from odoo import models, fields, api, _
 from odoo.exceptions import ValidationError, UserError
+import requests
 
 
 class PaymentMethod(models.Model):
