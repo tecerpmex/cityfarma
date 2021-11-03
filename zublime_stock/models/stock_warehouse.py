@@ -46,82 +46,86 @@ class StockPicking(models.Model):
         company = self.env['res.company'].sudo().search([('zublime', '=', True),
                                                         ('id', '=', self.env.user.company_id.id)], limit=1)
         service = ''
-        if self.picking_type_id.sequence_code == 'OUT':
-            service = '/dispatch-order/notify-out-action'
-        elif self.picking_type_id.sequence_code == 'PACK':
-            service = '/dispatch-order/notify-packing-action'
-        elif self.picking_type_id.sequence_code == 'PICK':
-            service = '/dispatch-order/notify-picking-action'
-        if service:
-            url = company.url_zublime + service
-            data = {
-                'id': self.id,
-                'order_id': self.sale_id.id,
-                'state': 'done'
-            }
-            headers = {"Content-type": "application/x-www-form-urlencoded"}
-            req = requests.request(method='POST', url=url, data=data, headers=headers)
-            req.json()
+        for order in self:
+            if order.picking_type_id.sequence_code == 'OUT':
+                service = '/dispatch-order/notify-out-action'
+            elif order.picking_type_id.sequence_code == 'PACK':
+                service = '/dispatch-order/notify-packing-action'
+            elif order.picking_type_id.sequence_code == 'PICK':
+                service = '/dispatch-order/notify-picking-action'
+            if service:
+                url = company.url_zublime + service
+                data = {
+                    'id': order.id,
+                    'order_id': order.sale_id.id,
+                    'state': 'done'
+                }
+                headers = {"Content-type": "application/x-www-form-urlencoded"}
+                req = requests.request(method='POST', url=url, data=data, headers=headers)
+                req.json()
 
     def connection_postman_picking(self):
         company = self.env['res.company'].sudo().search([('zublime', '=', True),
                                                         ('id', '=', self.env.user.company_id.id)], limit=1)
         service = ''
-        if self.picking_type_id.sequence_code == 'OUT':
-            service = '/dispatch-order/notify-out-action'
-        elif self.picking_type_id.sequence_code == 'PACK':
-            service = '/dispatch-order/notify-packing-action'
-        elif self.picking_type_id.sequence_code == 'PICK':
-            service = '/dispatch-order/notify-picking-action'
-        if service:
-            url = company.url_zublime + service
-            data = {
-                'id': self.id,
-                'state': self.state
-            }
-            headers = {"Content-type": "application/x-www-form-urlencoded"}
-            req = requests.request(method='POST', url=url, data=data, headers=headers)
-            req.json()
+        for order in self:
+            if order.picking_type_id.sequence_code == 'OUT':
+                service = '/dispatch-order/notify-out-action'
+            elif order.picking_type_id.sequence_code == 'PACK':
+                service = '/dispatch-order/notify-packing-action'
+            elif order.picking_type_id.sequence_code == 'PICK':
+                service = '/dispatch-order/notify-picking-action'
+            if service:
+                url = company.url_zublime + service
+                data = {
+                    'id': order.id,
+                    'state': order.state
+                }
+                headers = {"Content-type": "application/x-www-form-urlencoded"}
+                req = requests.request(method='POST', url=url, data=data, headers=headers)
+                req.json()
 
     def connection_postman_scrap(self):
         company = self.env['res.company'].sudo().search([('zublime', '=', True),
                                                         ('id', '=', self.env.user.company_id.id)], limit=1)
         service = ''
-        if self.picking_type_id.sequence_code == 'OUT':
-            service = '/dispatch-order/notify-out-action'
-        elif self.picking_type_id.sequence_code == 'PACK':
-            service = '/dispatch-order/notify-packing-action'
-        elif self.picking_type_id.sequence_code == 'PICK':
-            service = '/dispatch-order/notify-picking-action'
-        if service:
-            url = company.url_zublime + service
-            data = {
-                'id': self.id,
-                'state': 'scrap'
-            }
-            headers = {"Content-type": "application/x-www-form-urlencoded"}
-            req = requests.request(method='POST', url=url, data=data, headers=headers)
-            req.json()
+        for order in self:
+            if order.picking_type_id.sequence_code == 'OUT':
+                service = '/dispatch-order/notify-out-action'
+            elif order.picking_type_id.sequence_code == 'PACK':
+                service = '/dispatch-order/notify-packing-action'
+            elif order.picking_type_id.sequence_code == 'PICK':
+                service = '/dispatch-order/notify-picking-action'
+            if service:
+                url = company.url_zublime + service
+                data = {
+                    'id': order.id,
+                    'state': 'scrap'
+                }
+                headers = {"Content-type": "application/x-www-form-urlencoded"}
+                req = requests.request(method='POST', url=url, data=data, headers=headers)
+                req.json()
 
     def connection_postman_refund(self):
         company = self.env['res.company'].sudo().search([('zublime', '=', True),
                                                         ('id', '=', self.env.user.company_id.id)], limit=1)
         service = ''
-        if self.picking_type_id.sequence_code == 'OUT':
-            service = '/dispatch-order/notify-out-action'
-        elif self.picking_type_id.sequence_code == 'PACK':
-            service = '/dispatch-order/notify-packing-action'
-        elif self.picking_type_id.sequence_code == 'PICK':
-            service = '/dispatch-order/notify-picking-action'
-        if service:
-            url = company.url_zublime + service
-            data = {
-                'id': self.id,
-                'state': 'refund'
-            }
-            headers = {"Content-type": "application/x-www-form-urlencoded"}
-            req = requests.request(method='POST', url=url, data=data, headers=headers)
-            req.json()
+        for order in self:
+            if order.picking_type_id.sequence_code == 'OUT':
+                service = '/dispatch-order/notify-out-action'
+            elif order.picking_type_id.sequence_code == 'PACK':
+                service = '/dispatch-order/notify-packing-action'
+            elif order.picking_type_id.sequence_code == 'PICK':
+                service = '/dispatch-order/notify-picking-action'
+            if service:
+                url = company.url_zublime + service
+                data = {
+                    'id': order.id,
+                    'state': 'refund'
+                }
+                headers = {"Content-type": "application/x-www-form-urlencoded"}
+                req = requests.request(method='POST', url=url, data=data, headers=headers)
+                req.json()
 
     def button_validate(self):
         res = super(StockPicking, self).button_validate()

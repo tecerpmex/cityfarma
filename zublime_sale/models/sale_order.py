@@ -85,12 +85,13 @@ class SaleOrder(models.Model):
         self.ensure_one()
         res = super(SaleOrder, self).update_prices()
         for line in self.order_line.filtered(lambda line: not line.display_type):
-            discount1 = line.maximum_price - line.price_unit
-            desc1 = discount1/line.maximum_price*100
+            if line.price_unit and line.maximum_price:
+                discount1 = line.maximum_price - line.price_unit
+                desc1 = discount1/line.maximum_price*100
 
-            sub1 = line.maximum_price * line.product_uom_qty
-            subtotal = (sub1 - line.price_subtotal)/sub1 * 100
-            line.write({'discount_one': desc1, 'discount_subtotal': subtotal})
+                sub1 = line.maximum_price * line.product_uom_qty
+                subtotal = (sub1 - line.price_subtotal)/sub1 * 100
+                line.write({'discount_one': desc1, 'discount_subtotal': subtotal})
 
         return res
 
