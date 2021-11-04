@@ -129,7 +129,8 @@ class StockPicking(models.Model):
 
     def button_validate(self):
         res = super(StockPicking, self).button_validate()
-        self.connection_postman()
+        if not self._context.get('button_validate_picking_ids'):
+            self.connection_postman()
         return res
 
     def action_cancel(self):
