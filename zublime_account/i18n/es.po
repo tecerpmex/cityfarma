@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 14.0+e-20210402\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-31 19:59+0000\n"
-"PO-Revision-Date: 2021-10-31 16:05-0400\n"
+"POT-Creation-Date: 2021-11-05 05:19+0000\n"
+"PO-Revision-Date: 2021-11-05 01:24-0400\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -39,68 +39,17 @@ msgstr "<br/> Total cobrado ="
 
 #. module: zublime_account
 #: model_terms:ir.ui.view,arch_db:zublime_account.report_header_custom
-msgid "<span>Amount Paid</span>"
-msgstr "<span>Importe Pagado</span>"
+msgid ""
+"<strong>Tarrif:</strong>\n"
+"                        ("
+msgstr ""
+"<strong>Comisión del método de pago</strong>\n"
+"                        ("
 
 #. module: zublime_account
 #: model_terms:ir.ui.view,arch_db:zublime_account.report_header_custom
-msgid "<span>Balance</span>"
-msgstr "<span>Balance</span>"
-
-#. module: zublime_account
-#: model_terms:ir.ui.view,arch_db:zublime_account.report_header_custom
-msgid "<span>Invoice Date</span>"
-msgstr "<span>Fecha de la factura</span>"
-
-#. module: zublime_account
-#: model_terms:ir.ui.view,arch_db:zublime_account.report_header_custom
-msgid "<span>Invoice Number</span>"
-msgstr "<span>Número de factura</span>"
-
-#. module: zublime_account
-#: model_terms:ir.ui.view,arch_db:zublime_account.report_header_custom
-msgid "<span>Original Amount</span>"
-msgstr "<span>Importe original</span>"
-
-#. module: zublime_account
-#: model_terms:ir.ui.view,arch_db:zublime_account.report_header_custom
-msgid "<span>Reference</span>"
-msgstr "<span>Referencia</span>"
-
-#. module: zublime_account
-#: model_terms:ir.ui.view,arch_db:zublime_account.report_header_custom
-msgid "<strong>Customer:</strong>"
-msgstr "<strong>Cliente:</strong>"
-
-#. module: zublime_account
-#: model_terms:ir.ui.view,arch_db:zublime_account.report_header_custom
-msgid "<strong>Memo:</strong>"
-msgstr "<strong>Nota:</strong>"
-
-#. module: zublime_account
-#: model_terms:ir.ui.view,arch_db:zublime_account.report_header_custom
-msgid "<strong>Payment Amount:</strong>"
-msgstr "<strong>Importe del pago:</strong>"
-
-#. module: zublime_account
-#: model_terms:ir.ui.view,arch_db:zublime_account.report_header_custom
-msgid "<strong>Payment Date:</strong>"
-msgstr "<strong>Fecha de pago:</strong>"
-
-#. module: zublime_account
-#: model_terms:ir.ui.view,arch_db:zublime_account.report_header_custom
-msgid "<strong>Payment Method:</strong>"
-msgstr "<strong>Método de pago:</strong>"
-
-#. module: zublime_account
-#: model_terms:ir.ui.view,arch_db:zublime_account.report_header_custom
-msgid "<strong>Tarrif:</strong>"
-msgstr "<strong>Comisión por forma de pago:</strong>"
-
-#. module: zublime_account
-#: model_terms:ir.ui.view,arch_db:zublime_account.report_header_custom
-msgid "<strong>Vendor:</strong>"
-msgstr "<strong>Proveedor:</strong>"
+msgid "<strong>Total Cobrado: </strong>"
+msgstr "<strong>Total Cobrado: </strong>"
 
 #. module: zublime_account
 #: model:ir.model.fields,field_description:zublime_account.field_account_payment_register__amount_due
@@ -164,6 +113,11 @@ msgid "Importe del pago:"
 msgstr "Importe del pago:"
 
 #. module: zublime_account
+#: model:ir.model.fields,field_description:zublime_account.field_account_payment_register__invoice_id
+msgid "Invoice"
+msgstr "Factura"
+
+#. module: zublime_account
 #: model:ir.model.fields,field_description:zublime_account.field_account_payment_register__is_payment_fee
 msgid "Is Payment Fee"
 msgstr "Es la tarifa de pago"
@@ -203,11 +157,6 @@ msgstr "Pagado en"
 #: model:ir.model,name:zublime_account.model_l10n_mx_edi_payment_method
 msgid "Payment Method for Mexico from SAT Data"
 msgstr "Método de pago para México a partir de datos del SAT"
-
-#. module: zublime_account
-#: model_terms:ir.ui.view,arch_db:zublime_account.report_header_custom
-msgid "Payment Receipt:"
-msgstr "Recibo de pago:"
 
 #. module: zublime_account
 #: model:ir.model,name:zublime_account.model_account_payment
