@@ -193,8 +193,9 @@ class AccountPayment(models.Model):
 
     @api.depends('amount', 'l10n_mx_edi_payment_method_id')
     def _compute_amount(self):
-        self.tariff = self.amount * (self.l10n_mx_edi_payment_method_id.tariff / 100)
-        self.amount_fee = self.amount + self.tariff
+        for val in self:
+            val.tariff = val.amount * (val.l10n_mx_edi_payment_method_id.tariff / 100)
+            val.amount_fee = val.amount + val.tariff
 
 
 class AccountMove(models.Model):
