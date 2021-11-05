@@ -3,6 +3,7 @@ from odoo import fields, models, api
 
 class ProductPriceListItem(models.Model):
     _inherit = 'product.pricelist.item'
+    _order = "name desc"
 
     cost = fields.Float(
         string='Precio Costo',
@@ -34,6 +35,8 @@ class ProductPriceListItem(models.Model):
         related='product_id.barcode',
         store=True,  
         )
+    name = fields.Char(
+        store=True)
     
     @api.onchange('product_tmpl_id')
     def onchange_product_item(self):
