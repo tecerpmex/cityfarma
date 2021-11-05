@@ -18,6 +18,7 @@
         "report/zublime_payment_extra_fee_report.xml",
         "report/report_invoice.xml",
     ],
+    'qweb': ['static/src/xml/account_payment.xml'],
     "installable": True,
     "application": False,
 }

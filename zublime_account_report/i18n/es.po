@@ -1,0 +1,204 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* zublime_account_report
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 14.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-10-31 18:36+0000\n"
+"PO-Revision-Date: 2021-10-31 18:36+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: zublime_account_report
+#: model:ir.actions.report,print_report_name:zublime_account_report.account_invoices_without_payment_detail
+msgid "(object._get_report_base_filename())"
+msgstr ""
+
+#. module: zublime_account_report
+#: model_terms:ir.ui.view,arch_db:zublime_account_report.report_detailed_invoice_document
+msgid ""
+"<span groups=\"account.group_show_line_subtotals_tax_excluded\">Amount</span>\n"
+"                                    <span groups=\"account.group_show_line_subtotals_tax_included\">Total Price</span>"
+msgstr ""
+"<span groups=\"account.group_show_line_subtotals_tax_excluded\">Importe</span>\n"
+"                                    <span groups=\"account.group_show_line_subtotals_tax_included\">Precio Total</span>"
+
+#. module: zublime_account_report
+#: model_terms:ir.ui.view,arch_db:zublime_account_report.report_detailed_invoice_document
+msgid "<span>Description</span>"
+msgstr "<span>Descripción</span>"
+
+#. module: zublime_account_report
+#: model_terms:ir.ui.view,arch_db:zublime_account_report.report_detailed_invoice_document
+msgid "<span>Disc.%</span>"
+msgstr "<span>Desc.%</span>"
+
+#. module: zublime_account_report
+#: model_terms:ir.ui.view,arch_db:zublime_account_report.report_detailed_invoice_document
+msgid "<span>Price Max. Public</span>"
+msgstr "<span>Precio Max. Público</span>"
+
+#. module: zublime_account_report
+#: model_terms:ir.ui.view,arch_db:zublime_account_report.report_detailed_invoice_document
+msgid "<span>Quantity</span>"
+msgstr "<span>Cantidad</span>"
+
+#. module: zublime_account_report
+#: model_terms:ir.ui.view,arch_db:zublime_account_report.report_detailed_invoice_document
+msgid "<span>Reduction (%)</span>"
+msgstr "<span>Reducción (%)</span>"
+
+#. module: zublime_account_report
+#: model_terms:ir.ui.view,arch_db:zublime_account_report.report_detailed_invoice_document
+msgid "<span>Taxes</span>"
+msgstr "<span>Impuestos</span>"
+
+#. module: zublime_account_report
+#: model_terms:ir.ui.view,arch_db:zublime_account_report.report_detailed_invoice_document
+msgid "<span>Unit Price</span>"
+msgstr "<span>Precio Unitario</span>"
+
+#. module: zublime_account_report
+#: model_terms:ir.ui.view,arch_db:zublime_account_report.report_detailed_invoice_document
+msgid "<strong class=\"mr16\">Subtotal</strong>"
+msgstr "<strong class=\"mr16\">Subtotal</strong>"
+
+#. module: zublime_account_report
+#: model_terms:ir.ui.view,arch_db:zublime_account_report.report_detailed_invoice_document
+msgid ""
+"<strong class=\"text-center\">Scan me with your banking "
+"app.</strong><br/><br/>"
+msgstr ""
+"<strong class=\"text-center\">Para ser escaneado con la aplicación "
+"bancaria.</strong><br/><br/>"
+
+#. module: zublime_account_report
+#: model_terms:ir.ui.view,arch_db:zublime_account_report.report_detailed_invoice_document
+msgid "<strong>Amount Due</strong>"
+msgstr "<strong>Importe adeudado</strong>"
+
+#. module: zublime_account_report
+#: model_terms:ir.ui.view,arch_db:zublime_account_report.report_detailed_invoice_document
+msgid "<strong>Customer Code:</strong>"
+msgstr "<strong>Código del cliente:</strong>"
+
+#. module: zublime_account_report
+#: model_terms:ir.ui.view,arch_db:zublime_account_report.report_detailed_invoice_document
+msgid "<strong>Due Date:</strong>"
+msgstr "<strong>Fecha de vencimiento:</strong>"
+
+#. module: zublime_account_report
+#: model_terms:ir.ui.view,arch_db:zublime_account_report.report_detailed_invoice_document
+msgid "<strong>Incoterm: </strong>"
+msgstr ""
+
+#. module: zublime_account_report
+#: model_terms:ir.ui.view,arch_db:zublime_account_report.report_detailed_invoice_document
+msgid "<strong>Invoice Date:</strong>"
+msgstr "<strong>Fecha de factura:</strong>"
+
+#. module: zublime_account_report
+#: model_terms:ir.ui.view,arch_db:zublime_account_report.report_detailed_invoice_document
+msgid "<strong>Reference:</strong>"
+msgstr "<strong>Referencia:</strong>"
+
+#. module: zublime_account_report
+#: model_terms:ir.ui.view,arch_db:zublime_account_report.report_detailed_invoice_document
+msgid "<strong>Source:</strong>"
+msgstr "<strong>Origen:</strong>"
+
+#. module: zublime_account_report
+#: model_terms:ir.ui.view,arch_db:zublime_account_report.report_detailed_invoice_document
+msgid "<strong>Subtotal</strong>"
+msgstr "<strong>Subtotal</strong>"
+
+#. module: zublime_account_report
+#: model_terms:ir.ui.view,arch_db:zublime_account_report.report_detailed_invoice_document
+msgid "<strong>Total</strong>"
+msgstr "<strong>Total</strong>"
+
+#. module: zublime_account_report
+#: model_terms:ir.ui.view,arch_db:zublime_account_report.report_detailed_invoice_document
+msgid "Cancelled Invoice"
+msgstr "Factura cancelada"
+
+#. module: zublime_account_report
+#: model_terms:ir.ui.view,arch_db:zublime_account_report.report_detailed_invoice_document
+msgid "Credit Note"
+msgstr "Factura rectificativa"
+
+#. module: zublime_account_report
+#: model:ir.actions.report,name:zublime_account_report.report_detailed_invoice
+msgid "Detailed invoices"
+msgstr "Facturas detalladas"
+
+#. module: zublime_account_report
+#: model:ir.model.fields,field_description:zublime_account_report.field_report_zublime_account_report_report_detailed_invoice_template__display_name
+msgid "Display Name"
+msgstr "Nombre mostrado"
+
+#. module: zublime_account_report
+#: model_terms:ir.ui.view,arch_db:zublime_account_report.report_detailed_invoice_document
+msgid "Draft Invoice"
+msgstr "Factura borrador"
+
+#. module: zublime_account_report
+#: model:ir.model.fields,field_description:zublime_account_report.field_report_zublime_account_report_report_detailed_invoice_template__id
+msgid "ID"
+msgstr ""
+
+#. module: zublime_account_report
+#: model_terms:ir.ui.view,arch_db:zublime_account_report.report_detailed_invoice_document
+msgid "Invoice"
+msgstr "Factura"
+
+#. module: zublime_account_report
+#: model:ir.actions.report,name:zublime_account_report.account_invoices_without_payment_detail
+msgid "Invoices without Payment Detailed"
+msgstr "Facturas sin pago detalladas"
+
+#. module: zublime_account_report
+#: model:ir.model.fields,field_description:zublime_account_report.field_report_zublime_account_report_report_detailed_invoice_template____last_update
+msgid "Last Modified on"
+msgstr "Última modificación el"
+
+#. module: zublime_account_report
+#: model_terms:ir.ui.view,arch_db:zublime_account_report.report_detailed_invoice_document
+msgid "Paid on"
+msgstr "Pagado en"
+
+#. module: zublime_account_report
+#: model_terms:ir.ui.view,arch_db:zublime_account_report.report_detailed_invoice_document
+msgid "Please use the following communication for your payment :"
+msgstr "Por favor utilice la siguiente referencia al realizar su pago: "
+
+#. module: zublime_account_report
+#: model_terms:ir.ui.view,arch_db:zublime_account_report.report_detailed_invoice_document
+msgid "Tax ID"
+msgstr "NIF"
+
+#. module: zublime_account_report
+#: model_terms:ir.ui.view,arch_db:zublime_account_report.report_detailed_invoice_document
+msgid "Vendor Bill"
+msgstr "Factura de proveedor"
+
+#. module: zublime_account_report
+#: model_terms:ir.ui.view,arch_db:zublime_account_report.report_detailed_invoice_document
+msgid "Vendor Credit Note"
+msgstr "Factura rectificativa de proveedor"
+
+#. module: zublime_account_report
+#: model_terms:ir.ui.view,arch_db:zublime_account_report.report_detailed_invoice_document
+msgid "on"
+msgstr "de"
+
+#. module: zublime_account_report
+#: model:ir.model,name:zublime_account_report.model_report_zublime_account_report_report_detailed_invoice_template
+msgid "report.zublime_account_report.report_detailed_invoice_template"
+msgstr ""

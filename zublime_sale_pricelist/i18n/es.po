@@ -1,0 +1,123 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* zublime_sale_pricelist
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 14.0+e-20210402\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-10-31 22:01+0000\n"
+"PO-Revision-Date: 2021-10-31 18:07-0400\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
+"Language: es\n"
+"X-Generator: Poedit 2.3\n"
+
+#. module: zublime_sale_pricelist
+#: model_terms:ir.ui.view,arch_db:zublime_sale_pricelist.product_pricelist_inherit_form
+#: model_terms:ir.ui.view,arch_db:zublime_sale_pricelist.product_pricelist_inherit_form_inherit
+#: model_terms:ir.ui.view,arch_db:zublime_sale_pricelist.product_pricelist_tree_inherit
+#: model_terms:ir.ui.view,arch_db:zublime_sale_pricelist.product_pricelist_tree_inherit_view
+msgid "Bar Code"
+msgstr "Código de barras"
+
+#. module: zublime_sale_pricelist
+#: model:ir.model.fields,field_description:zublime_sale_pricelist.field_product_pricelist_item__barcode
+msgid "Barcode"
+msgstr "Código de barras"
+
+#. module: zublime_sale_pricelist
+#: model_terms:ir.ui.view,arch_db:zublime_sale_pricelist.product_pricelist_inherit_form
+#: model_terms:ir.ui.view,arch_db:zublime_sale_pricelist.product_pricelist_inherit_form_inherit
+#: model_terms:ir.ui.view,arch_db:zublime_sale_pricelist.product_pricelist_tree_inherit
+#: model_terms:ir.ui.view,arch_db:zublime_sale_pricelist.product_pricelist_tree_inherit_view
+msgid "Cost"
+msgstr "Costo"
+
+#. module: zublime_sale_pricelist
+#: model:ir.model.fields,field_description:zublime_sale_pricelist.field_product_pricelist_item__taxes_ids
+msgid "Customer Taxes"
+msgstr "Impuestos al cliente"
+
+#. module: zublime_sale_pricelist
+#: model:ir.model.fields,help:zublime_sale_pricelist.field_product_pricelist_item__taxes_ids
+msgid "Default taxes used when selling the product."
+msgstr "Impuestos predeterminados utilizados al vender el producto."
+
+#. module: zublime_sale_pricelist
+#: model:ir.model.fields,field_description:zublime_sale_pricelist.field_product_pricelist_item__display_name
+msgid "Display Name"
+msgstr "Nombre para mostrar"
+
+#. module: zublime_sale_pricelist
+#: model:ir.model.fields,field_description:zublime_sale_pricelist.field_product_pricelist_item__id
+msgid "ID"
+msgstr "ID"
+
+#. module: zublime_sale_pricelist
+#: model:ir.model.fields,help:zublime_sale_pricelist.field_product_pricelist_item__barcode
+msgid "International Article Number used for product identification."
+msgstr "Número de artículo internacional utilizado para la identificación del producto."
+
+#. module: zublime_sale_pricelist
+#: model:ir.model.fields,field_description:zublime_sale_pricelist.field_product_pricelist_item____last_update
+msgid "Last Modified on"
+msgstr "Última modificación el"
+
+#. module: zublime_sale_pricelist
+#: model:ir.model.fields,field_description:zublime_sale_pricelist.field_product_pricelist_item__margin
+#: model_terms:ir.ui.view,arch_db:zublime_sale_pricelist.product_pricelist_inherit_form
+#: model_terms:ir.ui.view,arch_db:zublime_sale_pricelist.product_pricelist_inherit_form_inherit
+#: model_terms:ir.ui.view,arch_db:zublime_sale_pricelist.product_pricelist_tree_inherit
+#: model_terms:ir.ui.view,arch_db:zublime_sale_pricelist.product_pricelist_tree_inherit_view
+msgid "Margin"
+msgstr "Utilidad"
+
+#. module: zublime_sale_pricelist
+#: model_terms:ir.ui.view,arch_db:zublime_sale_pricelist.product_pricelist_inherit_form
+#: model_terms:ir.ui.view,arch_db:zublime_sale_pricelist.product_pricelist_inherit_form_inherit
+#: model_terms:ir.ui.view,arch_db:zublime_sale_pricelist.product_pricelist_tree_inherit
+#: model_terms:ir.ui.view,arch_db:zublime_sale_pricelist.product_pricelist_tree_inherit_view
+msgid "Margin in %"
+msgstr "Utilidad %"
+
+#. module: zublime_sale_pricelist
+#: model:ir.model.fields,field_description:zublime_sale_pricelist.field_product_pricelist_item__cost
+msgid "Precio Costo"
+msgstr "Precio Costo"
+
+#. module: zublime_sale_pricelist
+#: model:ir.model.fields,help:zublime_sale_pricelist.field_product_pricelist_item__list_price
+msgid "Price at which the product is sold to customers."
+msgstr "Precio al que se vende el producto a los clientes."
+
+#. module: zublime_sale_pricelist
+#: model:ir.model,name:zublime_sale_pricelist.model_product_pricelist_item
+msgid "Pricelist Rule"
+msgstr "Regla de lista de precios"
+
+#. module: zublime_sale_pricelist
+#: model:ir.model.fields,field_description:zublime_sale_pricelist.field_product_pricelist_item__list_price
+#: model_terms:ir.ui.view,arch_db:zublime_sale_pricelist.product_pricelist_inherit_form
+#: model_terms:ir.ui.view,arch_db:zublime_sale_pricelist.product_pricelist_inherit_form_inherit
+#: model_terms:ir.ui.view,arch_db:zublime_sale_pricelist.product_pricelist_tree_inherit
+#: model_terms:ir.ui.view,arch_db:zublime_sale_pricelist.product_pricelist_tree_inherit_view
+msgid "Sales Price"
+msgstr "Precio de venta"
+
+#. module: zublime_sale_pricelist
+#: model_terms:ir.ui.view,arch_db:zublime_sale_pricelist.product_pricelist_inherit_form
+#: model_terms:ir.ui.view,arch_db:zublime_sale_pricelist.product_pricelist_inherit_form_inherit
+#: model_terms:ir.ui.view,arch_db:zublime_sale_pricelist.product_pricelist_tree_inherit
+#: model_terms:ir.ui.view,arch_db:zublime_sale_pricelist.product_pricelist_tree_inherit_view
+msgid "Taxes"
+msgstr "Impuestos"
+
+#. module: zublime_sale_pricelist
+#: model:ir.model.fields,field_description:zublime_sale_pricelist.field_product_pricelist_item__utilidad
+msgid "Utilidad"
+msgstr "Utilidad"

@@ -2,6 +2,7 @@
 
 from odoo import models, fields, api, _
 from odoo.exceptions import ValidationError, UserError
+import requests
 
 
 class PaymentMethod(models.Model):
@@ -15,6 +16,16 @@ class PaymentMethod(models.Model):
 
 class AccountPaymentRegister(models.TransientModel):
     _inherit = 'account.payment.register'
+
+    @api.model
+    def default_get(self, fields):
+        res = super(AccountPaymentRegister, self).default_get(fields)
+        active_id = self.env.context.get("active_ids", [])
+        record = self.env["account.move"].browse(active_id)
+        if active_id and len(active_id) == 1:
+            res["invoice_id"] = record.id
+
+        return res
 
     # Associated fields sprint 2 requirement 3
     tariff = fields.Float(
@@ -49,6 +60,11 @@ class AccountPaymentRegister(models.TransientModel):
     )
     is_payment_fee = fields.Boolean(store=True)
 
+    invoice_id = fields.Many2one(
+        comodel_name="account.move",
+        string="Invoice",
+    )
+
     # Associated methods sprint 2 requirement 3
     @api.onchange('amount', 'l10n_mx_edi_payment_method_id')
     def _onchange_amount(self):
@@ -70,7 +86,7 @@ class AccountPaymentRegister(models.TransientModel):
         super(AccountPaymentRegister, self)._compute_amount()
         self.amount_due = self.amount
 
-    @api.onchange('cash_received')
+    @api.onchange('cash_received', 'amount')
     def _onchange_cash_received(self):
         self.change_return = self.cash_received - self.amount
 
@@ -78,13 +94,67 @@ class AccountPaymentRegister(models.TransientModel):
     def _check_cash_received(self):
         for record in self:
             if record.cash_received < record.amount:
-                raise ValidationError("The cash delivered by the customer is less than the amount")
+                raise ValidationError(_("The cash delivered by the customer is less than the amount"))
 
     @api.constrains('amount_due', 'amount')
     def _check_amount(self):
         for record in self:
             if record.amount_due < record.amount:
-                raise ValidationError("The amount to be paid by the customer is greater than the amount owed")
+                raise ValidationError(_("The amount to be paid by the customer is greater than the amount owed"))
+
+    def connection_postman_payment(self):
+        company = self.env['res.company'].sudo().search([('zublime', '=', True),
+                                                        ('id', '=', self.env.user.company_id.id)], limit=1)
+        sale = self.env['sale.order'].sudo().search([('name', '=', self.invoice_id.invoice_origin)], limit=1)
+        service = '/dispatch-order/register-order-paid'
+        url = company.url_zublime + service
+        data = {
+            'odoo_id_sale': sale.id,
+            'odoo_id_invoice': self.invoice_id.id,
+            'state': self.invoice_id.payment_state,
+            'amount_total': self.invoice_id.amount_total,
+            'amount_paid': self.amount,
+            'amount_due': self.amount_due,
+            'payment_method_id': self.payment_method_id.id,
+            'journal_id': self.journal_id.id,
+            'movement_type': 'income',
+            'payment_date': self.payment_date
+        }
+        headers = {"Content-type": "application/x-www-form-urlencoded"}
+        req = requests.request(method='POST', url=url, data=data, headers=headers)
+        req.json()
+
+    def connection_postman_payment_paid(self):
+        company = self.env['res.company'].sudo().search([('zublime', '=', True),
+                                                        ('id', '=', self.env.user.company_id.id)], limit=1)
+        sale = self.env['sale.order'].sudo().search([('name', '=', self.invoice_id.invoice_origin)], limit=1)
+        service = '/dispatch-order/notify-order-paid'
+        url = company.url_zublime + service
+        data = {
+            'odoo_id_sale': sale.id,
+            'odoo_id_invoice': self.invoice_id.id,
+            'state': self.invoice_id.payment_state,
+            'amount_total': self.invoice_id.amount_total,
+            'amount_paid': self.amount,
+            'amount_due': self.amount_due,
+            'payment_method_id': self.payment_method_id.id,
+            'journal_id': self.journal_id.id,
+            'movement_type': 'income',
+            'payment_date': self.payment_date
+        }
+        headers = {"Content-type": "application/x-www-form-urlencoded"}
+        req = requests.request(method='POST', url=url, data=data, headers=headers)
+        req.json()
+
+    def action_create_payments(self):
+        active_id = self.env.context.get("active_ids", [])
+        res = super(AccountPaymentRegister, self).action_create_payments()
+        for payment in self:
+            payment.connection_postman_payment()
+            if payment.invoice_id.payment_state == 'paid':
+                payment.connection_postman_payment_paid()
+
+        return res
 
     # @api.onchange('l10n_mx_edi_payment_method_id')
     # def _onchange_payment_method_m(self):

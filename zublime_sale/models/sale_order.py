@@ -25,9 +25,27 @@ class SaleOrder(models.Model):
         req = requests.request(method='POST', url=url, data=data, headers=headers)
         req.json()
 
+    def connection_postman_cancel(self, id):
+        company = self.env['res.company'].sudo().search([('zublime', '=', True),
+                                                        ('id', '=', self.env.user.company_id.id)], limit=1)
+        service = '/dispatch-order/notify-order-action'
+        url = company.url_zublime + service
+        data = {
+            'id': id,
+            'state': 'cancel'
+        }
+        headers = {"Content-type": "application/x-www-form-urlencoded"}
+        req = requests.request(method='POST', url=url, data=data, headers=headers)
+        req.json()
+
     def action_confirm(self):
         result = super(SaleOrder, self).action_confirm()
         self.connection_postman(self.id)
+        return result
+
+    def action_cancel(self):
+        result = super(SaleOrder, self).action_cancel()
+        self.connection_postman_cancel(self.id)
         return result
 
     @api.depends('order_line.product_uom_qty', 'order_line.qty_invoiced', 'invoice_ids.state')
@@ -67,12 +85,13 @@ class SaleOrder(models.Model):
         self.ensure_one()
         res = super(SaleOrder, self).update_prices()
         for line in self.order_line.filtered(lambda line: not line.display_type):
-            discount1 = line.maximum_price - line.price_unit
-            desc1 = discount1/line.maximum_price*100
+            if line.price_unit and line.maximum_price:
+                discount1 = line.maximum_price - line.price_unit
+                desc1 = discount1/line.maximum_price*100
 
-            sub1 = line.maximum_price * line.product_uom_qty
-            subtotal = (sub1 - line.price_subtotal)/sub1 * 100
-            line.write({'discount_one': desc1, 'discount_subtotal': subtotal})
+                sub1 = line.maximum_price * line.product_uom_qty
+                subtotal = (sub1 - line.price_subtotal)/sub1 * 100
+                line.write({'discount_one': desc1, 'discount_subtotal': subtotal})
 
         return res
 
