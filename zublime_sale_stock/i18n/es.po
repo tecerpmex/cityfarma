@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 14.0+e-20210402\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-09-30 23:25+0000\n"
-"PO-Revision-Date: 2021-09-30 19:32-0400\n"
+"POT-Creation-Date: 2021-11-07 06:19+0000\n"
+"PO-Revision-Date: 2021-11-07 01:30-0500\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -18,35 +18,94 @@ msgstr ""
 "X-Generator: Poedit 2.3\n"
 
 #. module: zublime_sale_stock
+#: model_terms:ir.ui.view,arch_db:zublime_sale_stock.sale_order_form_quote_inherit
+msgid "Add to order lines"
+msgstr "Agregar a las líneas de pedido"
+
+#. module: zublime_sale_stock
+#: model:ir.model,name:zublime_sale_stock.model_product_product
+msgid "Busqueda por Codigo de Barra"
+msgstr "Busqueda por Codigo de Barra"
+
+#. module: zublime_sale_stock
 #: model_terms:ir.ui.view,arch_db:zublime_sale_stock.view_sale_stock_action_confirm
 msgid "Cancel"
 msgstr "Cancelar"
 
 #. module: zublime_sale_stock
+#: model:ir.model.fields,field_description:zublime_sale_stock.field_sale_order_inoffer__product_uom_category_id
+msgid "Category"
+msgstr "Categoría"
+
+#. module: zublime_sale_stock
+#: model:ir.model.fields,help:zublime_sale_stock.field_sale_order_inoffer__product_uom_category_id
+msgid ""
+"Conversion between Units of Measure can only occur if they belong to the "
+"same category. The conversion will be made based on the ratios."
+msgstr ""
+"La conversión entre unidades de medida solo puede ocurrir si pertenecen a "
+"la misma categoría. La conversión se realizará en base a las proporciones."
+
+#. module: zublime_sale_stock
+#: model:ir.model.fields,field_description:zublime_sale_stock.field_sale_order_inoffer__create_uid
 #: model:ir.model.fields,field_description:zublime_sale_stock.field_sale_stock_action_confirm__create_uid
 msgid "Created by"
 msgstr "Creado por"
 
 #. module: zublime_sale_stock
+#: model:ir.model.fields,field_description:zublime_sale_stock.field_sale_order_inoffer__create_date
 #: model:ir.model.fields,field_description:zublime_sale_stock.field_sale_stock_action_confirm__create_date
 msgid "Created on"
 msgstr "Creado en"
 
 #. module: zublime_sale_stock
+#: model:ir.model.fields,field_description:zublime_sale_stock.field_sale_order_inoffer__name
+msgid "Description"
+msgstr "Descripción"
+
+#. module: zublime_sale_stock
 #: model:ir.model.fields,field_description:zublime_sale_stock.field_account_move__display_name
+#: model:ir.model.fields,field_description:zublime_sale_stock.field_product_product__display_name
+#: model:ir.model.fields,field_description:zublime_sale_stock.field_product_template__display_name
 #: model:ir.model.fields,field_description:zublime_sale_stock.field_sale_order__display_name
+#: model:ir.model.fields,field_description:zublime_sale_stock.field_sale_order_inoffer__display_name
 #: model:ir.model.fields,field_description:zublime_sale_stock.field_sale_stock_action_confirm__display_name
 #: model:ir.model.fields,field_description:zublime_sale_stock.field_stock_move__display_name
 msgid "Display Name"
 msgstr "Nombre para mostrar"
 
 #. module: zublime_sale_stock
+#: model:ir.model.fields,help:zublime_sale_stock.field_sale_order_inoffer__sequence
+msgid "Gives the sequence order when displaying a list of optional products."
+msgstr ""
+"Da el orden de secuencia al mostrar una lista de productos opcionales."
+
+#. module: zublime_sale_stock
 #: model:ir.model.fields,field_description:zublime_sale_stock.field_account_move__id
+#: model:ir.model.fields,field_description:zublime_sale_stock.field_product_product__id
+#: model:ir.model.fields,field_description:zublime_sale_stock.field_product_template__id
 #: model:ir.model.fields,field_description:zublime_sale_stock.field_sale_order__id
+#: model:ir.model.fields,field_description:zublime_sale_stock.field_sale_order_inoffer__id
 #: model:ir.model.fields,field_description:zublime_sale_stock.field_sale_stock_action_confirm__id
 #: model:ir.model.fields,field_description:zublime_sale_stock.field_stock_move__id
 msgid "ID"
 msgstr "ID"
+
+#. module: zublime_sale_stock
+#: model_terms:ir.ui.view,arch_db:zublime_sale_stock.sale_order_form_quote_inherit
+msgid "In Offer Products"
+msgstr "Productos en oferta"
+
+#. module: zublime_sale_stock
+#: model:ir.model.fields,field_description:zublime_sale_stock.field_sale_order__sale_order_inoffer_ids
+msgid "In Offer Products Lines"
+msgstr "Líneas de Productos en Oferta"
+
+#. module: zublime_sale_stock
+#: model:ir.model.fields,field_description:zublime_sale_stock.field_product_product__inoffer
+#: model:ir.model.fields,field_description:zublime_sale_stock.field_product_template__inoffer
+msgid "In offer"
+msgstr "En oferta"
 
 #. module: zublime_sale_stock
 #: model:ir.model,name:zublime_sale_stock.model_account_move
@@ -55,26 +114,66 @@ msgstr "Entrada de diario"
 
 #. module: zublime_sale_stock
 #: model:ir.model.fields,field_description:zublime_sale_stock.field_account_move____last_update
+#: model:ir.model.fields,field_description:zublime_sale_stock.field_product_product____last_update
+#: model:ir.model.fields,field_description:zublime_sale_stock.field_product_template____last_update
 #: model:ir.model.fields,field_description:zublime_sale_stock.field_sale_order____last_update
+#: model:ir.model.fields,field_description:zublime_sale_stock.field_sale_order_inoffer____last_update
 #: model:ir.model.fields,field_description:zublime_sale_stock.field_sale_stock_action_confirm____last_update
 #: model:ir.model.fields,field_description:zublime_sale_stock.field_stock_move____last_update
 msgid "Last Modified on"
 msgstr "Última modificación el"
 
 #. module: zublime_sale_stock
+#: model:ir.model.fields,field_description:zublime_sale_stock.field_sale_order_inoffer__write_uid
 #: model:ir.model.fields,field_description:zublime_sale_stock.field_sale_stock_action_confirm__write_uid
 msgid "Last Updated by"
 msgstr "Última actualización por"
 
 #. module: zublime_sale_stock
+#: model:ir.model.fields,field_description:zublime_sale_stock.field_sale_order_inoffer__write_date
 #: model:ir.model.fields,field_description:zublime_sale_stock.field_sale_stock_action_confirm__write_date
 msgid "Last Updated on"
 msgstr "Ultima actualización en"
 
 #. module: zublime_sale_stock
+#: model:ir.model.fields,field_description:zublime_sale_stock.field_sale_order_inoffer__line_id
+msgid "Line"
+msgstr "Línea"
+
+#. module: zublime_sale_stock
 #: model_terms:ir.ui.view,arch_db:zublime_sale_stock.view_sale_stock_action_confirm
 msgid "Parameters"
 msgstr "Parámetros"
+
+#. module: zublime_sale_stock
+#: model:ir.model.fields,field_description:zublime_sale_stock.field_sale_order_inoffer__is_present
+msgid "Present on Quotation"
+msgstr "Presente en cotización"
+
+#. module: zublime_sale_stock
+#: model:ir.model.fields,field_description:zublime_sale_stock.field_sale_order_inoffer__product_id
+msgid "Product"
+msgstr "Producto"
+
+#. module: zublime_sale_stock
+#: model:ir.model,name:zublime_sale_stock.model_product_template
+msgid "Product Template"
+msgstr "Plantilla de producto"
+
+#. module: zublime_sale_stock
+#: model:ir.model,name:zublime_sale_stock.model_sale_order_inoffer
+msgid "Products in offer"
+msgstr "Productos en oferta"
+
+#. module: zublime_sale_stock
+#: model:ir.model.fields,field_description:zublime_sale_stock.field_sale_order_inoffer__quantity
+msgid "Quantity"
+msgstr "Cantidad"
+
+#. module: zublime_sale_stock
+#: model_terms:ir.ui.view,arch_db:zublime_sale_stock.sale_order_form_quote_inherit
+msgid "Quantity:"
+msgstr "Cantidad:"
 
 #. module: zublime_sale_stock
 #: code:addons/zublime_sale_stock/models/sale_order.py:0
@@ -92,6 +191,21 @@ msgid "Sales Order"
 msgstr "Órdenes de venta"
 
 #. module: zublime_sale_stock
+#: model:ir.model.fields,field_description:zublime_sale_stock.field_sale_order_inoffer__order_id
+msgid "Sales Order Reference"
+msgstr "Referencia de orden de venta"
+
+#. module: zublime_sale_stock
+#: model_terms:ir.ui.view,arch_db:zublime_sale_stock.sale_order_form_quote_inherit
+msgid "Sales Quotation Template Lines"
+msgstr "Líneas de plantilla de cotización de ventas"
+
+#. module: zublime_sale_stock
+#: model:ir.model.fields,field_description:zublime_sale_stock.field_sale_order_inoffer__sequence
+msgid "Sequence"
+msgstr "Secuencia"
+
+#. module: zublime_sale_stock
 #: model:ir.model,name:zublime_sale_stock.model_stock_move
 msgid "Stock Move"
 msgstr "Movimiento de stock"
@@ -103,9 +217,28 @@ msgid ""
 msgstr "Hay productos sin disponibilidad. ¿Quieres confirmar este pedido?."
 
 #. module: zublime_sale_stock
+#: model:ir.model.fields,help:zublime_sale_stock.field_sale_order_inoffer__is_present
+msgid ""
+"This field will be checked if the option line's product is already present "
+"in the quotation."
+msgstr ""
+"Este campo se marcará si el producto de la línea de opción ya está presente "
+"en la cotización."
+
+#. module: zublime_sale_stock
 #: model_terms:ir.ui.view,arch_db:zublime_sale_stock.view_sale_stock_action_confirm
 msgid "To accept"
 msgstr "Aceptar"
+
+#. module: zublime_sale_stock
+#: model:ir.model.fields,field_description:zublime_sale_stock.field_sale_order_inoffer__uom_id
+msgid "Unit of Measure "
+msgstr "Unidad de medida"
+
+#. module: zublime_sale_stock
+#: model_terms:ir.ui.view,arch_db:zublime_sale_stock.sale_order_form_quote_inherit
+msgid "UoM"
+msgstr "UoM"
 
 #. module: zublime_sale_stock
 #: model:ir.actions.act_window,name:zublime_sale_stock.action_sale_stock_action_confirm
