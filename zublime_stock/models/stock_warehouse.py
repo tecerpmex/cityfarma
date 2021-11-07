@@ -49,7 +49,7 @@ class StockPicking(models.Model):
         for order in self:
             if order.picking_type_id.sequence_code == 'OUT':
                 service = '/dispatch-order/notify-out-action'
-            elif order.picking_type_id.sequence_code == 'PACK':
+            elif order.picking_type_id.sequence_code == 'CERT':
                 service = '/dispatch-order/notify-packing-action'
             elif order.picking_type_id.sequence_code == 'PICK':
                 service = '/dispatch-order/notify-picking-action'
@@ -64,14 +64,14 @@ class StockPicking(models.Model):
                 req = requests.request(method='POST', url=url, data=data, headers=headers)
                 req.json()
 
-    def connection_postman_picking(self):
+    def connection_postman_picking(self, state):
         company = self.env['res.company'].sudo().search([('zublime', '=', True),
                                                         ('id', '=', self.env.user.company_id.id)], limit=1)
         service = ''
         for order in self:
             if order.picking_type_id.sequence_code == 'OUT':
                 service = '/dispatch-order/notify-out-action'
-            elif order.picking_type_id.sequence_code == 'PACK':
+            elif order.picking_type_id.sequence_code == 'CERT':
                 service = '/dispatch-order/notify-packing-action'
             elif order.picking_type_id.sequence_code == 'PICK':
                 service = '/dispatch-order/notify-picking-action'
@@ -79,49 +79,8 @@ class StockPicking(models.Model):
                 url = company.url_zublime + service
                 data = {
                     'id': order.id,
-                    'state': order.state
-                }
-                headers = {"Content-type": "application/x-www-form-urlencoded"}
-                req = requests.request(method='POST', url=url, data=data, headers=headers)
-                req.json()
-
-    def connection_postman_scrap(self):
-        company = self.env['res.company'].sudo().search([('zublime', '=', True),
-                                                        ('id', '=', self.env.user.company_id.id)], limit=1)
-        service = ''
-        for order in self:
-            if order.picking_type_id.sequence_code == 'OUT':
-                service = '/dispatch-order/notify-out-action'
-            elif order.picking_type_id.sequence_code == 'PACK':
-                service = '/dispatch-order/notify-packing-action'
-            elif order.picking_type_id.sequence_code == 'PICK':
-                service = '/dispatch-order/notify-picking-action'
-            if service:
-                url = company.url_zublime + service
-                data = {
-                    'id': order.id,
-                    'state': 'scrap'
-                }
-                headers = {"Content-type": "application/x-www-form-urlencoded"}
-                req = requests.request(method='POST', url=url, data=data, headers=headers)
-                req.json()
-
-    def connection_postman_refund(self):
-        company = self.env['res.company'].sudo().search([('zublime', '=', True),
-                                                        ('id', '=', self.env.user.company_id.id)], limit=1)
-        service = ''
-        for order in self:
-            if order.picking_type_id.sequence_code == 'OUT':
-                service = '/dispatch-order/notify-out-action'
-            elif order.picking_type_id.sequence_code == 'PACK':
-                service = '/dispatch-order/notify-packing-action'
-            elif order.picking_type_id.sequence_code == 'PICK':
-                service = '/dispatch-order/notify-picking-action'
-            if service:
-                url = company.url_zublime + service
-                data = {
-                    'id': order.id,
-                    'state': 'refund'
+                    'order_id': order.sale_id.id,
+                    'state': state
                 }
                 headers = {"Content-type": "application/x-www-form-urlencoded"}
                 req = requests.request(method='POST', url=url, data=data, headers=headers)
@@ -135,7 +94,7 @@ class StockPicking(models.Model):
 
     def action_cancel(self):
         res = super(StockPicking, self).action_cancel()
-        self.connection_postman_picking()
+        self.connection_postman_picking(state='cancel')
         return res
 
     def _pre_action_done_hook(self):
@@ -156,10 +115,9 @@ class StockScrap(models.Model):
     _inherit = 'stock.scrap'
 
     def action_validate(self):
-        res = super(StockScrap, self).action_validate()
         picking = self.picking_id
-        if picking:
-            picking.connection_postman_scrap()
+        picking.connection_postman_picking(state='scrap')
+        res = super(StockScrap, self).action_validate()
         return res
 
 
@@ -169,6 +127,5 @@ class ReturnPicking(models.TransientModel):
     def create_returns(self):
         res = super(ReturnPicking, self).create_returns()
         picking = self.picking_id
-        if picking:
-            picking.connection_postman_refund()
+        picking.connection_postman_picking(state='refund')
         return res
