@@ -34,7 +34,7 @@ class ProductPriceListItem(models.Model):
     barcode = fields.Char(
         #related='product_id.barcode',
         related='product_tmpl_id.barcode',
-        store=True,  
+        readonly=True
         )
     name = fields.Char(
         store=True)
