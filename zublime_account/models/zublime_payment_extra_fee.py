@@ -108,6 +108,9 @@ class AccountPaymentRegister(models.TransientModel):
         sale = self.env['sale.order'].sudo().search([('name', '=', self.invoice_id.invoice_origin)], limit=1)
         service = '/dispatch-order/register-order-paid'
         url = company.url_zublime + service
+        ### BEGIN ADDED BY ZUBLIME C0001
+        symfony_branch_office_id = company.symfony_branch_office_id
+        ### END ADDED BY ZUBLIME
         data = {
             'odoo_id_sale': sale.id,
             'odoo_id_invoice': self.invoice_id.id,
@@ -119,7 +122,10 @@ class AccountPaymentRegister(models.TransientModel):
             'payment_method_id': self.payment_method_id.id,
             'journal_id': self.journal_id.id,
             'movement_type': 'income',
-            'payment_date': self.payment_date
+            'payment_date': self.payment_date,
+            ### BEGIN ADDED BY ZUBLIME C0001
+            'branch_office_id': symfony_branch_office_id
+            ### END ADDED BY ZUBLIME
         }
         headers = {"Content-type": "application/x-www-form-urlencoded"}
         req = requests.request(method='POST', url=url, data=data, headers=headers)
@@ -131,6 +137,9 @@ class AccountPaymentRegister(models.TransientModel):
         sale = self.env['sale.order'].sudo().search([('name', '=', self.invoice_id.invoice_origin)], limit=1)
         service = '/dispatch-order/notify-order-paid'
         url = company.url_zublime + service
+        ### BEGIN ADDED BY ZUBLIME C0001
+        symfony_branch_office_id = company.symfony_branch_office_id
+        ### END ADDED BY ZUBLIME
         data = {
             'odoo_id_sale': sale.id,
             'odoo_id_invoice': self.invoice_id.id,
@@ -142,7 +151,10 @@ class AccountPaymentRegister(models.TransientModel):
             'payment_method_id': self.payment_method_id.id,
             'journal_id': self.journal_id.id,
             'movement_type': 'income',
-            'payment_date': self.payment_date
+            'payment_date': self.payment_date,
+            ### BEGIN ADDED BY ZUBLIME C0001
+            'branch_office_id': symfony_branch_office_id
+            ### END ADDED BY ZUBLIME
         }
         headers = {"Content-type": "application/x-www-form-urlencoded"}
         req = requests.request(method='POST', url=url, data=data, headers=headers)

@@ -11,6 +11,7 @@
                             <group>
                                 <field name="zublime"/>
                                 <field name="url_zublime"/>
+                                <field name="symfony_branch_office_id"/>
                             </group>
                         </group>
                     </page>

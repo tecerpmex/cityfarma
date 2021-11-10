@@ -14,9 +14,15 @@ class SaleOrder(models.Model):
                                                         ('id', '=', self.env.user.company_id.id)], limit=1)
         service = '/dispatch-order/notify-order-action'
         url = company.url_zublime + service
+        ### BEGIN ADDED BY ZUBLIME C0001
+        symfony_branch_office_id = company.symfony_branch_office_id
+        ### END ADDED BY ZUBLIME
         data = {
             'id': id,
-            'state': 'done'
+            'state': 'done',
+            ### BEGIN ADDED BY ZUBLIME C0001
+            'branch_office_id': symfony_branch_office_id
+            ### END ADDED BY ZUBLIME
         }
         #r = requests.get(url)
         #r.status_code
@@ -30,9 +36,15 @@ class SaleOrder(models.Model):
                                                         ('id', '=', self.env.user.company_id.id)], limit=1)
         service = '/dispatch-order/notify-order-action'
         url = company.url_zublime + service
+        ### BEGIN ADDED BY ZUBLIME C0001
+        symfony_branch_office_id = company.symfony_branch_office_id
+        ### END ADDED BY ZUBLIME
         data = {
             'id': id,
-            'state': 'cancel'
+            'state': 'cancel',
+            ### BEGIN ADDED BY ZUBLIME C0001
+            'branch_office_id': symfony_branch_office_id
+            ### END ADDED BY ZUBLIME
         }
         headers = {"Content-type": "application/x-www-form-urlencoded"}
         req = requests.request(method='POST', url=url, data=data, headers=headers)
@@ -74,8 +86,14 @@ class SaleOrder(models.Model):
                                                         ('id', '=', self.env.user.company_id.id)], limit=1)
         service = '/dispatch-order/notify-order-paid'
         url = company.url_zublime + service
+        ### BEGIN ADDED BY ZUBLIME C0001
+        symfony_branch_office_id = company.symfony_branch_office_id
+        ### END ADDED BY ZUBLIME
         data = {
             'ids': id,
+            ### BEGIN ADDED BY ZUBLIME C0001
+            'branch_office_id': symfony_branch_office_id
+            ### END ADDED BY ZUBLIME
         }
         headers = {"Content-type": "application/x-www-form-urlencoded"}
         req = requests.request(method='POST', url=url, data=data, headers=headers)
@@ -102,3 +120,9 @@ class ResCompany(models.Model):
     zublime = fields.Boolean(string='Zublime', readonly=False)
     url_zublime = fields.Char('Url service')
 
+    ### BEGIN ADDED BY ZUBLIME C0001
+    symfony_branch_office_id = fields.Integer(
+        string='Id de sucursal (Symfony ID)',
+        default=0,
+        required=True)
+    ### END ADDED BY ZUBLIME

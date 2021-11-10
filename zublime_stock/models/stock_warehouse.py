@@ -55,10 +55,16 @@ class StockPicking(models.Model):
                 service = '/dispatch-order/notify-picking-action'
             if service:
                 url = company.url_zublime + service
+                ### BEGIN ADDED BY ZUBLIME C0001
+                symfony_branch_office_id = company.symfony_branch_office_id
+                ### END ADDED BY ZUBLIME
                 data = {
                     'id': order.id,
                     'order_id': order.sale_id.id,
-                    'state': 'done'
+                    'state': 'done',
+                    ### BEGIN ADDED BY ZUBLIME C0001
+                    'branch_office_id': symfony_branch_office_id
+                    ### END ADDED BY ZUBLIME
                 }
                 headers = {"Content-type": "application/x-www-form-urlencoded"}
                 req = requests.request(method='POST', url=url, data=data, headers=headers)
@@ -77,10 +83,16 @@ class StockPicking(models.Model):
                 service = '/dispatch-order/notify-picking-action'
             if service:
                 url = company.url_zublime + service
+                ### BEGIN ADDED BY ZUBLIME C0001
+                symfony_branch_office_id = company.symfony_branch_office_id
+                ### END ADDED BY ZUBLIME
                 data = {
                     'id': order.id,
                     'order_id': order.sale_id.id,
-                    'state': state
+                    'state': state,
+                    ### BEGIN ADDED BY ZUBLIME C0001
+                    'branch_office_id': symfony_branch_office_id
+                    ### END ADDED BY ZUBLIME
                 }
                 headers = {"Content-type": "application/x-www-form-urlencoded"}
                 req = requests.request(method='POST', url=url, data=data, headers=headers)
