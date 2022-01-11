@@ -114,15 +114,3 @@ class SaleOrder(models.Model):
         return res
 
 
-class ResCompany(models.Model):
-    _inherit = 'res.company'
-
-    zublime = fields.Boolean(string='Zublime', readonly=False)
-    url_zublime = fields.Char('Url service')
-
-    ### BEGIN ADDED BY ZUBLIME C0001
-    symfony_branch_office_id = fields.Integer(
-        string='Id de sucursal (Symfony ID)',
-        default=0,
-        required=True)
-    ### END ADDED BY ZUBLIME

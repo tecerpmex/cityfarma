@@ -6,14 +6,13 @@
     'category': 'Sale',
     'summary': 'Maximum sale price',
     'author': 'Easi Coders',
-    'depends': ['sale_management', 'account'],
+    'depends': ['sale_management', 'account', 'zublime_utils'],
     'data': [
             "security/security_product.xml",
             "views/res_config_settings.xml",
             "views/product.xml",
             "views/sale_order.xml",
-            "views/account_move.xml",
-            "views/res_company_view.xml"
+            "views/account_move.xml"
     ],
     'installable': True,
     'auto_install': False,

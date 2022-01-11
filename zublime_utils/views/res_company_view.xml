@@ -6,7 +6,7 @@
             <field name="inherit_id" ref="base.view_company_form"/>
             <field name="arch" type="xml">
                 <xpath expr="//notebook" position="inside">
-                    <page name="info_zublime" string="Zublime service">
+                    <page name="info_zublime" string="Symfony webservices connect">
                         <group>
                             <group>
                                 <field name="zublime"/>
@@ -18,5 +18,4 @@
                 </xpath>
             </field>
     </record>
-
 </odoo>
